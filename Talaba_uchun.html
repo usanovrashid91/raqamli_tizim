@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<title>Talabalar uchun test ishlash sahifasi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: Arial, sans-serif; background:#eef2f7; margin:0; padding:20px; }
+  .container { max-width:900px; margin:auto; background:#fff; padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+  h1 { text-align:center; color:#0b67d0; }
+  .row { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
+  .source { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+  input, button { padding:8px; border:1px solid #ccc; border-radius:8px; }
+  button { background:#0b67d0; color:#fff; border:none; cursor:pointer; }
+  button:hover { opacity:0.9; }
+  .question { margin-bottom:18px; padding:12px; border:1px solid #ddd; border-radius:8px; }
+  .question img { max-width:260px; display:block; margin-top:8px; }
+  .options label { display:block; margin-bottom:6px; }
+  #timer { font-weight:bold; color:#d62828; margin:12px 0; }
+  #result { margin-top:16px; font-size:18px; font-weight:bold; }
+</style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>📖 Talabalar uchun test ishlash sahifasi</h1>
+
+  <div class="row source">
+    <div>
+      <label>Google Drive JSON linki nusxasini joylang</label>
+      <input id="driveLink" placeholder="https://drive.google.com/file/d/.../view?usp=sharing">
+      <button id="loadLink">Linkdan yuklash</button>
+    </div>
+    <div>
+      <label> Bu yerga JSON faylni yuklang</label>
+      <input type="file" id="jsonInput" accept=".json">
+      <button id="loadFile">Fayldan yuklash</button>
+    </div>
+  </div>
+
+  <form id="studentForm" style="display:none;">
+    <div class="row">
+      <div style="flex:1"><label>Familiya<input name="familiya" required></label></div>
+      <div style="flex:1"><label>Ism<input name="ism" required></label></div>
+    </div>
+    <div class="row">
+      <div style="flex:1"><label>Sharif<input name="otasiningIsmi" required></label></div>
+      <div style="flex:1"><label>Guruh raqami<input name="guruh" required></label></div>
+    </div>
+    <button type="submit">Testni boshlash</button>
+  </form>
+
+  <div id="timer"></div>
+  <form id="testForm"></form>
+  <button id="finishBtn" style="display:none;">Testni yakunlash</button>
+  <div id="result"></div>
+</div>
+
+<script>
+let questions = [];
+let settings = {};
+let studentInfo = {};
+let remainingSeconds = 0;
+let interval;
+
+// Helper: fetch Drive file raw content by sharing link (public)
+async function fetchDriveJson(shareUrl){
+  // Converts /file/d/FILE_ID/view → https://www.googleapis.com/drive/v3/files/FILE_ID?alt=media requires token (not ideal)
+  // Simpler: if the file is set to "Anyone with the link" and you use "uc?export=download"
+  // Accept common formats:
+  // https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+  // https://drive.google.com/uc?id=FILE_ID&export=download
+  const idMatch = shareUrl.match(/\/d\/([A-Za-z0-9_-]+)/) || shareUrl.match(/[?&]id=([A-Za-z0-9_-]+)/);
+  const fileId = idMatch ? idMatch[1] : null;
+  if(!fileId) throw new Error('Linkdan FILE_ID topilmadi.');
+  const direct = `https://drive.google.com/uc?export=download&id=${fileId}`;
+  const res = await fetch(direct);
+  if(!res.ok) throw new Error('Drive faylini o‘qib bo‘lmadi.');
+  return await res.text();
+}
+
+// Load via link
+document.getElementById('loadLink').addEventListener('click', async ()=>{
+  const url = document.getElementById('driveLink').value.trim();
+  if(!url){ alert('Link bo‘sh.'); return; }
+  try{
+    const text = await fetchDriveJson(url);
+    const parsed = JSON.parse(text);
+    questions = parsed.questions;
+    settings = parsed.settings;
+    alert('✅ Test yuklandi. Ma’lumotlaringizni kiriting.');
+    document.getElementById('studentForm').style.display = 'block';
+  }catch(e){
+    alert('❌ Yuklashda xatolik: ' + e.message);
+  }
+});
+
+// Load via file
+document.getElementById('loadFile').addEventListener('click', async ()=>{
+  const fileInput = document.getElementById('jsonInput');
+  const file = fileInput.files[0];
+  if(!file){ alert('JSON fayl tanlanmadi.'); return; }
+  try{
+    const text = await file.text();
+    const parsed = JSON.parse(text);
+    questions = parsed.questions;
+    settings = parsed.settings;
+    alert('✅ Test yuklandi. Ma’lumotlaringizni kiriting.');
+    document.getElementById('studentForm').style.display = 'block';
+  }catch(e){
+    alert('❌ JSON o‘qishda xatolik.');
+  }
+});
+
+// Start test
+document.getElementById('studentForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  studentInfo = Object.fromEntries(new FormData(e.target).entries());
+  remainingSeconds = (settings?.time || 30) * 60;
+
+  const form = document.getElementById('testForm');
+  form.innerHTML = '';
+  questions.forEach((q, idx)=>{
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.innerHTML = `<h3>${idx+1}. <span class="math">${q.savol}</span></h3>`;
+    if(q.image){
+      const img = document.createElement('img');
+      img.src = q.image;
+      div.appendChild(img);
+    }
+    const opts = document.createElement('div');
+    opts.className = 'options';
+    q.variantlar.forEach(v=>{
+      const letter = (v[0]||'').toUpperCase(); // expects "A) ...", "B) ..."
+      const safeLetter = /[A-Za-z]/.test(letter) ? letter : '';
+      opts.innerHTML += `<label><input type="radio" name="q${idx}" value="${safeLetter}"> <span class="math">${v}</span></label>`;
+    });
+    div.appendChild(opts);
+    form.appendChild(div);
+  });
+
+  document.getElementById('finishBtn').style.display = 'inline-block';
+  MathJax.typeset();
+
+  const timerEl = document.getElementById('timer');
+  clearInterval(interval);
+  interval = setInterval(()=>{
+    remainingSeconds--;
+    const min = Math.floor(remainingSeconds/60);
+    const sec = remainingSeconds%60;
+    timerEl.textContent = `⏱️ Vaqt: ${min}:${sec<10?'0':''}${sec}`;
+    if(remainingSeconds<=0){
+      clearInterval(interval);
+      finishTest();
+    }
+  }, 1000);
+});
+
+// Finish
+document.getElementById('finishBtn').addEventListener('click', finishTest);
+
+function finishTest(){
+  clearInterval(interval);
+  let correct = 0;
+  questions.forEach((q,idx)=>{
+    const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+    if(selected && selected.value === (q.javob||'').toUpperCase()) {
+      correct++;
+    }
+  });
+
+  const total = questions.length;
+  const wrong = total - correct;
+  const percent = Math.round((correct / total) * 100);
+
+  const r = document.getElementById('result');
+  r.innerHTML = `
+    ✅ ${studentInfo.familiya} ${studentInfo.ism} (${studentInfo.guruh})<br> natijasi:<br>
+    ✔️ To‘g‘ri javoblar soni: ${correct} ta <br>
+    ❌ Noto‘g‘ri javoblar soni: ${wrong} ta <br>
+    📊 Ball: ${percent}%
+  `;
+}
+
+function finishTest(){
+  clearInterval(interval);
+  let correct = 0;
+  questions.forEach((q,idx)=>{
+    const selected = document.querySelector(`input[name="q${idx}"]:checked`);
+    if(selected && selected.value === (q.javob||'').toUpperCase()) correct++;
+  });
+
+  const total = questions.length;
+  const wrong = total - correct;
+  const percent = Math.round((correct / total) * 100);
+
+  const r = document.getElementById('result');
+  r.innerHTML = `
+    ✅ ${studentInfo.familiya} ${studentInfo.ism} (${studentInfo.guruh}) natijasi:<br>
+    ✔️ To‘g‘ri javoblar soni: ${correct}<br>
+    ❌ Noto‘g‘ri javoblar soni: ${wrong}<br>
+    📊 Ball (%): ${percent}%<br><br>
+    <button id="exportExcel">📥 Excelga eksport qilish</button>
+  `;
+
+  // Excelga eksport qilish tugmasi
+document.getElementById('exportExcel').addEventListener('click', ()=>{
+  const rows = [
+    ["Familiya","Ism","Guruh","To‘g‘ri","Noto‘g‘ri","Foiz"],
+    [studentInfo.familiya, studentInfo.ism, studentInfo.guruh, correct, wrong, percent + "%"]
+  ];
+  const csvContent = "\uFEFF" + rows.map(row => row.join(";")).join("\n"); // rus Excel uchun ; ajratkich
+  const fileName = `${studentInfo.familiya}_${studentInfo.ism}_${studentInfo.guruh}.csv`;
+
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = fileName;
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+}
+</script>
+</body>
+</html>

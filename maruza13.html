@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<title>Maruza 13 | Hosilaning tatbiqlari</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<style>
+body{font-family:sans-serif;margin:20px;}
+h1,h2,h3{margin:10px 0}
+.section{background:#fff;padding:15px;border-radius:12px;margin-bottom:25px;box-shadow:0 0 12px rgba(0,0,0,.1)}
+input{width:260px;margin:6px}
+button{padding:7px 18px;margin:6px}
+pre{background:#111;color:#0f0;padding:12px;border-radius:8px;overflow:auto}
+#graph{width:100%;height:450px;background:#000;border-radius:12px}
+label{display:block;margin-top:8px;font-weight:bold}
+small{color:#555}
+</style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo" width="50">
+            <span>Usanov Rashid</span>
+        </div>
+        <nav>
+            <ul class="main-menu">
+                <li><a href="index.html">Bosh menyuu</a></li>
+                <li><a href="maruza.html">Ma'ruza</a></li>
+                <li><a href="amaliy.html">Amaliy</a></li>
+                <li><a href="#">Mustaqil ta'lim</a></li>
+                <li><a href="#">Prezentatsiya</a></li>
+                <li class="more-dropdown">
+                    <span class="more-trigger">More</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="video.html">Video</a></li>
+                        <li><a href="O'qituvchi_uchun.html">O'qituvchi uchun test</a></li>
+						<li><a href="Talaba_uchun.html">Talaba uchun test</a></li>
+                        <li><a href="structure.html">Sayt strukturasi</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="search-container">
+                <img src="search-icon.png" alt="Qidiruv" class="search-icon" width="28">
+                <input type="text" class="search-input" placeholder="Qidiruv...">
+            </div>
+        </nav>
+    </header>
+
+    <main class="lecture-detail">
+        <h6 class="page-title visible">13-Ma'ruza:</h6>
+
+        <div class="pdf-viewer">
+            <embed src="13-maruzasi.pdf" type="application/pdf" width="100%" height="600px">
+            <p>Agar PDF ko'rinmasa: <a href="maruza/13-maruzasi.pdf" target="_blank">Bu yerda oching</a></p>
+        </div>
+
+<h1>📘 Maruza 13</h1>
+<h2>Differensiallanuvchi funksiyalar. Hosilaning tatbiqlari</h2>
+
+<!-- ================= KIRITISH ================= -->
+<div class="section">
+<h3>1️⃣ Funksiya va kesma</h3>
+
+<label>f(x)</label>
+<input id="func" value="x*x - 4*x + 1">
+
+<label>Kesma [a , b]</label>
+<input id="a" value="-2">
+<input id="b" value="5">
+
+<label>Grafik oralig‘i</label>
+<input id="min" value="-6">
+<input id="max" value="6">
+
+<small>
+Misollar:<br>
+• x² - 4x + 1<br>
+• 1/x<br>
+• x³ - 3x<br>
+• sin(x)/x
+</small><br>
+
+<button id="calculate">Hisoblash</button>
+<button id="showGraph">3D grafik</button>
+</div>
+
+<!-- ================= BOSQICHLAR ================= -->
+<div class="section">
+<h3>📑 Hisoblash bosqichlari</h3>
+<pre id="steps"></pre>
+</div>
+
+<!-- ================= NATIJA ================= -->
+<div class="section">
+<h3>📊 Natijalar</h3>
+<pre id="result"></pre>
+</div>
+
+<div id="graph"></div>
+
+<script>
+let graphPoints=[], extremaPoints=[], asymptoteX=[], asymptoteY=[];
+
+// ================= HISOBLASH =================
+document.getElementById('calculate').onclick=()=>{
+  const expr=V('func');
+  const a=+V('a'), b=+V('b');
+  const min=+V('min'), max=+V('max');
+
+  const steps=[], res=[];
+  graphPoints=[]; extremaPoints=[]; asymptoteX=[]; asymptoteY=[];
+
+  steps.push("1️⃣ Berilgan funksiya:");
+  steps.push(`f(x) = ${expr}`);
+
+  const derivative = numericDerivative(expr);
+  steps.push("\n2️⃣ Hosila:");
+  steps.push(`f'(x) ≈ ${derivative}`);
+
+  // Ekstremum (hosila nolga teng joylar)
+  steps.push("\n3️⃣ Ekstremum nuqtalar:");
+  for(let x=min;x<=max;x+=0.01){
+    try{
+      if(Math.abs(evalFunc(derivative,x))<0.05){
+        const y=evalFunc(expr,x);
+        extremaPoints.push({x,y});
+        steps.push(`x ≈ ${x.toFixed(2)}, f(x) ≈ ${y.toFixed(2)}`);
+      }
+    }catch(e){}
+  }
+
+  // Kesmadagi max / min
+  let maxVal=-Infinity,minVal=Infinity,xMax=0,xMin=0;
+  for(let x=a;x<=b;x+=0.01){
+    try{
+      const y=evalFunc(expr,x);
+      if(y>maxVal){maxVal=y;xMax=x}
+      if(y<minVal){minVal=y;xMin=x}
+    }catch(e){}
+  }
+
+  steps.push("\n4️⃣ Kesmadagi eng katta va eng kichik qiymatlar:");
+  steps.push(`Max: f(${xMax.toFixed(2)}) = ${maxVal.toFixed(2)}`);
+  steps.push(`Min: f(${xMin.toFixed(2)}) = ${minVal.toFixed(2)}`);
+
+  // Asimptotalar (oddiy aniqlash)
+  steps.push("\n5️⃣ Asimptotalar:");
+  for(let x=min;x<=max;x+=0.05){
+    try{
+      const y=evalFunc(expr,x);
+      if(Math.abs(y)>50) asymptoteX.push(x);
+    }catch(e){
+      asymptoteX.push(x);
+    }
+  }
+
+  // Gorizontal asimptota taxmin
+  try{
+    const left=evalFunc(expr,-100);
+    const right=evalFunc(expr,100);
+    if(Math.abs(left-right)<1) asymptoteY.push((left+right)/2);
+  }catch(e){}
+
+  if(asymptoteX.length>0) steps.push("Vertikal asimptota mavjud (taxminiy)");
+  if(asymptoteY.length>0) steps.push(`Gorizontal asimptota: y ≈ ${asymptoteY[0].toFixed(2)}`);
+
+  // Grafik nuqtalari
+  for(let x=min;x<=max;x+=0.05){
+    try{
+      graphPoints.push({x,y:evalFunc(expr,x),z:0});
+    }catch(e){}
+  }
+
+  res.push(`Hosila: f'(x) = ${derivative}`);
+  res.push(`Kesmadagi max: ${maxVal.toFixed(2)}`);
+  res.push(`Kesmadagi min: ${minVal.toFixed(2)}`);
+
+  document.getElementById('steps').textContent=steps.join('\n');
+  document.getElementById('result').textContent=res.join('\n');
+};
+
+// ================= 3D GRAFIK =================
+document.getElementById('showGraph').onclick=()=>{
+  drawGraph();
+};
+
+function drawGraph(){
+  const box=document.getElementById('graph');
+  box.innerHTML='';
+
+  const scene=new THREE.Scene();
+  scene.background=new THREE.Color(0x050510);
+
+  const camera=new THREE.PerspectiveCamera(60,box.clientWidth/450,0.1,1000);
+  camera.position.set(10,10,15);
+  camera.lookAt(0,0,0);
+
+  const renderer=new THREE.WebGLRenderer({antialias:true});
+  renderer.setSize(box.clientWidth,450);
+  box.appendChild(renderer.domElement);
+
+  scene.add(new THREE.AxesHelper(6));
+  scene.add(new THREE.AmbientLight(0xffffff,0.9));
+
+  const geom=new THREE.SphereGeometry(0.06,16,16);
+
+  // Funksiya
+  graphPoints.forEach(p=>{
+    const m=new THREE.MeshBasicMaterial({color:0x00ffcc});
+    const s=new THREE.Mesh(geom,m);
+    s.position.set(p.x,p.y,p.z);
+    scene.add(s);
+  });
+
+  // Ekstremumlar
+  extremaPoints.forEach(p=>{
+    const m=new THREE.MeshBasicMaterial({color:0xff0000});
+    const s=new THREE.Mesh(new THREE.SphereGeometry(0.12,16,16),m);
+    s.position.set(p.x,p.y,0);
+    scene.add(s);
+  });
+
+  function animate(){
+    requestAnimationFrame(animate);
+    scene.rotation.y+=0.003;
+    scene.rotation.x+=0.002;
+    renderer.render(scene,camera);
+  }
+  animate();
+}
+
+// ================= YORDAMCHI =================
+function V(id){return document.getElementById(id).value}
+
+function evalFunc(expr,x){
+  expr=expr.replaceAll("^","**");
+  return Function("x","with(Math){return "+expr+"}")(x);
+}
+
+// SODDA NUMERIK HOSILA
+function numericDerivative(expr){
+  return `(${expr.replaceAll("^","**").replace(/x/g,"(x+0.001)")}-${expr.replaceAll("^","**")})/0.001`;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "savol": "Funksiya limitining Koshi bo‘yicha ta’rifi nimani anglatadi?",
+      "variantlar": [
+        "A) Har bir x uchun limit mavjudligini",
+        "B) Funksiya doimiy bo‘lishini",
+        "C) Argument ma’lum qiymatga yaqinlashganda funksiya qiymati ham ma’lum qiymatga yaqinlashishini",
+        "D) Funksiya hosilasi mavjud bo‘lishini"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Funksiya limitining Geyne bo‘yicha ta’rifi qanday?",
+      "variantlar": [
+        "A) Limitni grafigi orqali aniqlash",
+        "B) Funksiya argumenti ketma-ketlik bo‘lib yaqinlashganda funksiya qiymati ham limitga yaqinlashadi",
+        "C) Funksiya qiymati nolga teng bo‘lishi",
+        "D) Limit faqat musbat sonlarda aniqlanadi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Funksiya uzluksiz bo‘lishi uchun quyidagilardan qaysi biri to‘g‘ri bo‘lishi kerak?",
+      "variantlar": [
+        "A) Limit mavjud bo‘lishi, funksiya aniqlangan bo‘lishi va limit funksiya qiymatiga teng bo‘lishi",
+        "B) Funksiya har doim musbat bo‘lishi",
+        "C) Funksiya qiymati nolga teng bo‘lishi",
+        "D) Limit faqat chapdan mavjud bo‘lishi"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "Quyidagi ifoda qaysi aniqmaslik turiga misol: ∞−∞?",
+      "variantlar": [
+        "A) Cheksizlik",
+        "B) Aniq son",
+        "C) Aniqmaslik",
+        "D) Nol"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "ko‘rinishidagi ifoda qanday aniqmaslik turiga kiradi?",
+      "variantlar": [
+        "A) Cheksizlik",
+        "B) Nol",
+        "C) Aniq qiymat",
+        "D) Aniqmaslik"
+      ],
+      "javob": "D"
+    },
+    {
+      "savol": "Ajoyib limitlardan biri  -1 teng:",
+      "variantlar": [
+        "A) 0",
+        "B) 1",
+        "C) - ∞",
+        "D) −1"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Limit mavjud bo‘lishi uchun quyidagilardan qaysi biri shart?",
+      "variantlar": [
+        "A) Chap va o‘ng limitlar mavjud va teng bo‘lishi",
+        "B) Funksiya nolga teng bo‘lishi",
+        "C) Argument cheksiz bo‘lishi",
+        "D) Funksiya differensiallanuvchi bo‘lishi"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "​ ifodasining qiymati nechaga teng?",
+      "variantlar": [
+        "A) 0",
+        "B) 1",
+        "C) 2",
+        "D)"
+      ],
+      "javob": "D"
+    },
+    {
+      "savol": "Quyidagi ifoda qaysi aniqmaslik turiga misol: ∞−∞?",
+      "variantlar": [
+        "A) Cheksizlik",
+        "B) Aniq son",
+        "C) Aniqmaslik",
+        "D) Nol"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Aniqmasliklarning nechta asosiy turi mavjud?",
+      "variantlar": [
+        "A) 3",
+        "B) 5",
+        "C) 7",
+        "D) 9"
+      ],
+      "javob": "C"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "random",
+    "time": 20
+  }
+}

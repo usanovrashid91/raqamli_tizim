@@ -1,0 +1,89 @@
+{
+  "questions": [
+    {
+      "savol": "Yuqori tartibli determinantlarni hisoblashning asosiy usuli bu –",
+      "variantlar": [
+        "A) Minorlar bo‘yicha yoyish usuli",
+        "B) Qavslar qoidasi",
+        "C) Matritsani transpozitsiya qilish",
+        "D) Faol ustunni ko‘paytirish"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "Minor nima?",
+      "variantlar": [
+        "A) Matritsaning detirminanti",
+        "B) Matritsadagi eng kichik son",
+        "C) Elementga tegishli kichik determinant, u o‘sha element joylashgan satr va ustunni o‘chirib tashlab hisoblanadi",
+        "D) 0 ga teng element"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Algebraik to‘ldiruvchi qanday aniqlanadi?",
+      "variantlar": [
+        "A) Minor ustiga \"+\" belgisi qo‘yiladi",
+        "B) Minorni ko‘paytma bilan almashtirish",
+        "C) Minorni (−1)i+j(-1)^{i+j}(−1)i+j ga ko‘paytirish orqali",
+        "D) Minorni determinant bilan qo‘shish orqali"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Yuqori tartibli determinantlarni hisoblashning asosiy usuli bu –",
+      "variantlar": [
+        "A) Minorlar bo‘yicha yoyish usuli",
+        "B) Qavslar qoidasi",
+        "C) Matritsani transpozitsiya qilish",
+        "D) Faol ustunni ko‘paytirish"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "Minorlar bo‘yicha yoyishda qanday qator yoki ustun tanlanadi?",
+      "variantlar": [
+        "A) Har doim birinchi qator",
+        "B) Faqat so‘nggi ustun",
+        "C) O‘zimiz istagan qator yoki ustun",
+        "D) Faqat diagonal"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Agar determinantning biror satri yoki ustuni nollar bilan to‘ldirilgan bo‘lsa, determinant natijasi qanday bo‘ladi?",
+      "variantlar": [
+        "A) 1 ga teng",
+        "B) -1 ga teng",
+        "C) O‘zgarmaydi",
+        "D) 0 ga teng"
+      ],
+      "javob": "D"
+    },
+    {
+      "savol": "Kvadrat matritsaning determinanti 0 bo‘lsa, bu nimani bildiradi?",
+      "variantlar": [
+        "A) Matritsa diagonal",
+        "B) Matritsa teskari matritsaga ega emas",
+        "C) Matritsa nollardan iborat",
+        "D) Matritsa tenglamasi yo‘q"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Quyidagi determinantni hisoblang:",
+      "variantlar": [
+        "A) 6",
+        "B) 5",
+        "C) 2",
+        "D) -6"
+      ],
+      "javob": "A"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "sequential",
+    "time": 20
+  }
+}

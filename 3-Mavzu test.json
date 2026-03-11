@@ -1,0 +1,99 @@
+{
+  "questions": [
+    {
+      "savol": "Qachon kvadrat matritsaning teskari matritsasi mavjud bo‘ladi?",
+      "variantlar": [
+        "A) Barcha elementlari musbat bo‘lsa",
+        "B) Determinanti 0 ga teng bo‘lmasa",
+        "C) Barcha elementlari teng bo‘lsa",
+        "D) Deteminanti manfiy bo‘lsa"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Matritsaning rangi deganda nima tushuniladi?",
+      "variantlar": [
+        "A) Diagonal elementlari soni",
+        "B) Matritsadagi barcha elementlarning yig‘indisi",
+        "C) Nolli bo‘lmagan maksimal o‘lchamli minorning tartibi",
+        "D) Qator va ustunlar sonining ko‘paytmasi"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Teskari matritsani topishda qaysi usul ishlatiladi?",
+      "variantlar": [
+        "A) Gauss usuli",
+        "B) Determinantni nollash",
+        "C) Minorlar bo‘yicha yoyish",
+        "D) Diagonalga bo‘lish"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "Matritsaning rangi deganda nima tushuniladi?",
+      "variantlar": [
+        "A) Diagonal elementlari soni",
+        "B) Matritsadagi barcha elementlarning yig‘indisi",
+        "C) Nolli bo‘lmagan maksimal o‘lchamli minorning tartibi",
+        "D) Qator va ustunlar sonining ko‘paytmasi"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Rangni aniqlashda qanday usuldan foydalaniladi?",
+      "variantlar": [
+        "A) Transpozitsiya usuli",
+        "B) Gauss metodidan",
+        "C) Diagonal metodidan",
+        "D) Determinantlarni yig‘ish"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Agar matritsaning rangi 3 bo‘lsa, bu nimani anglatadi?",
+      "variantlar": [
+        "A) Matritsa 3 elementdan iborat",
+        "B) 3 ta qator mavjud",
+        "C) 3×3 o‘lchamli nolli bo‘lmagan minor mavjud",
+        "D) Barcha elementlari 3 ga teng"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Matritsaning rangi maksimal darajada bo‘lishi uchun qanday shart kerak?",
+      "variantlar": [
+        "A) Faqat bitta ustun bo‘lishi kerak",
+        "B) Barcha minorlar nollarga teng bo‘lishi kerak",
+        "C) Matritsaning barcha qatorlari chiziqli bog‘liq bo‘lishi kerak",
+        "D) Matritsaning qatorlari chiziqli mustaqil bo‘lishi kerak"
+      ],
+      "javob": "D"
+    },
+    {
+      "savol": "Matritsalar iqtisodiyotda qanday masalalarda qo‘llaniladi?",
+      "variantlar": [
+        "A) Tashqi savdo balansini tahlil qilishda",
+        "B) Iqlim o‘zgarishini kuzatishda",
+        "C) Yadro fizikasi modellarida",
+        "D) Geografik koordinatalarni hisoblashda"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "Teskari matritsa iqtisodiyotda qanday muammoni hal qilishda ishlatiladi?",
+      "variantlar": [
+        "A) Daromad va xarajatlar tahlilida",
+        "B) Ehtimollar nazariyasida",
+        "C) Ma’lumotlarni kodlashda",
+        "D) Matnli axborotni tarjima qilishda"
+      ],
+      "javob": "A"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "sequential",
+    "time": 20
+  }
+}

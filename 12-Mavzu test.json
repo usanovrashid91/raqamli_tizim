@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "savol": "Funksiya hosilasi nimani bildiradi?",
+      "variantlar": [
+        "A) Funksiyaning eng katta qiymatini",
+        "B) Funksiyaning grafikasi",
+        "C) Funksiyaning o‘zgarish tezligini",
+        "D) Funksiyaning limitini"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Funksiya hosilasi nimani bildiradi?",
+      "variantlar": [
+        "A) Funksiyaning eng katta qiymatini",
+        "B) Funksiyaning grafikasi",
+        "C) Funksiyaning o‘zgarish tezligini",
+        "D) Funksiyaning limitini"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "teng:",
+      "variantlar": [
+        "A) cos⁡x",
+        "B) −cos⁡",
+        "C) –sin x",
+        "D) tan⁡x"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "Funksiya hosilasining ta’rifi quyidagicha beriladi:",
+      "variantlar": [
+        "A) Funksiya qiymati",
+        "B) Argument ortirmasi",
+        "C) Hosila",
+        "D) Funksiya ortirmasi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "teng:",
+      "variantlar": [
+        "A) x",
+        "B)",
+        "C) 2x",
+        "D)"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "hosila necha bo‘ladi?",
+      "variantlar": [
+        "A) 3x",
+        "B)",
+        "C) x gat eng",
+        "D)  ga teng"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Hosilaning geometrik ma’nosi nima?",
+      "variantlar": [
+        "A) Egri chiziq uzunligini toppish",
+        "B) Tangens chiziqning burchagi",
+        "C) Grafik ostidagi maydon",
+        "D) Egri chiziqqa o‘tkazilgan normalaning tenglamasi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Agar y=f(x) funksiyaning hosilasi manfiy bo‘lsa, demak:",
+      "variantlar": [
+        "A) Funksiya ortmoqda",
+        "B) Funksiya o‘zgarmas",
+        "C) Funksiya kamaymoqda",
+        "D) Funksiya maksimumda"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri funksiya hosilasining mexanik ma’nosidir?",
+      "variantlar": [
+        "A) Kuch",
+        "B) Yo‘l",
+        "C) Tezlik",
+        "D) Zichlik"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Hosilaning iqtisodiy qo‘llanilishi nimani bildiradi?",
+      "variantlar": [
+        "A) Narxni kamaytirish",
+        "B) O‘zgaruvchanlikni aniqlash",
+        "C) Chekli o‘sish tezligini baholash (marginal qiymat)",
+        "D) Soliqni hisoblash"
+      ],
+      "javob": "C"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "random",
+    "time": 20
+  }
+}

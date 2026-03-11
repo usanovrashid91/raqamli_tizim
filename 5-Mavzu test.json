@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "savol": "Kramer usuli bilan yechiladigan sistema nechta yechimga ega bo‘ladi?",
+      "variantlar": [
+        "A) Har doim bitta yechim",
+        "B) Cheksiz ko‘p yechim",
+        "C) Yagona yechim",
+        "D) Hech qanday yechim yo‘q"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Ko‘p tarmoqli iqtisodiy modelda balans tenglamasi nimani anglatadi?",
+      "variantlar": [
+        "A) Xarajatlar daromaddan ko‘p bo‘lishini",
+        "B) Tarmoqlar o‘rtasidagi o‘zaro ta’sirni",
+        "C) Xarajat va daromadlar mutanosibligini",
+        "D) Biror mahsulot narxini"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Kramer usuli qaysi shartda ishlaydi?",
+      "variantlar": [
+        "A) Sistemada faqat ikkita tenglama bo‘lsa",
+        "B) Det(D) = 0 bo‘lsa",
+        "C) Koefitsientlar kvadrat matritsa hosil qilsa va Det(D) ≠ 0 bo‘lsa",
+        "D) Har doim ishlaydi"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Kramer usuli asosida har bir noma’lum uchun qanday determinantlar hisoblanadi?",
+      "variantlar": [
+        "A) Yechim determinantlari",
+        "B) O‘zgartirilgan determinantlar",
+        "C) Minor determinantlar",
+        "D) Bosh determinantlar"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Kramer usuli asosida har bir noma’lum uchun qanday determinantlar hisoblanadi?",
+      "variantlar": [
+        "A) Yechim determinantlari",
+        "B) O‘zgartirilgan determinantlar",
+        "C) Minor determinantlar",
+        "D) Bosh determinantlar"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri chiziqli tenglamalar sistemasining aniq sistema ekanligini bildiradi?",
+      "variantlar": [
+        "A) Det(A) = 0",
+        "B) Har doim cheksiz yechim mavjud",
+        "C) Det(A) ≠ 0 va yechim mavjud",
+        "D) Hech qanday yechim yo‘q"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Matritsani teskari matritsa yordamida yechish uchun qanday shart bajarilishi kerak?",
+      "variantlar": [
+        "A) Det(A) = 0",
+        "B) Matritsa o‘lchami toq bo‘lishi",
+        "C) Det(A) ≠ 0",
+        "D) A matritsa simmetrik bo‘lishi"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri tayanch ibora emas?",
+      "variantlar": [
+        "A) birgalikda bo‘lmagan Sistema",
+        "B) determinant",
+        "C) Kramer formulalari",
+        "D) Cheksiz sonlar nazariyasi"
+      ],
+      "javob": "D"
+    },
+    {
+      "savol": "Ko‘p tarmoqli iqtisodiy modelda balans tenglamasi nimani anglatadi?",
+      "variantlar": [
+        "A) Xarajatlar daromaddan ko‘p bo‘lishini",
+        "B) Tarmoqlar o‘rtasidagi o‘zaro ta’sirni",
+        "C) Xarajat va daromadlar mutanosibligini",
+        "D) Biror mahsulot narxini"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Determinantlar yordamida tenglama sistemasini yechish qanday metodga kiradi?",
+      "variantlar": [
+        "A) Elementar satrlar metodi",
+        "B) Analitik metod",
+        "C) Matritsalar metodi",
+        "D) Ko‘pburchak usuli"
+      ],
+      "javob": "C"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "random",
+    "time": 20
+  }
+}

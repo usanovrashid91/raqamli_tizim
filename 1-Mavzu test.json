@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "savol": "Matritsa nima?",
+      "variantlar": [
+        "A) Raqamlar to‘plami",
+        "B) Ketma-ket sonlar jadvali",
+        "C) Sonlar yoki elementlar to‘plami bo‘lib, satr va ustunlarga joylashtirilgan jadval",
+        "D) Funktsiyalar to‘plami"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Qaysi matritsa kvadrat matritsa hisoblanadi?",
+      "variantlar": [
+        "A) 2×3",
+        "B) 3×2",
+        "C) 4×4",
+        "D) 1×3"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Matritsaning tartibi qanday aniqlanadi?",
+      "variantlar": [
+        "A) Diagonal elementlar soni",
+        "B) Satrlar soni bo‘yicha",
+        "C) Satrlar va ustunlar soni juftligi",
+        "D) Faqat ustunlar soni bo‘yicha"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri matritsalar ustida qo‘shish amali uchun shart hisoblanadi?",
+      "variantlar": [
+        "A) Birinchi matritsa kvadrat bo‘lishi kerak",
+        "B) Ikkinchi matritsa nolli bo‘lishi kerak",
+        "C) Har ikki matritsaning o‘lchamlari teng bo‘lishi kerak",
+        "D) Har ikki matritsaning ustunlari teng bo‘lishi kerak"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Matritsaning transpozitsiyasi nima?",
+      "variantlar": [
+        "A) Uning har bir elementi kvadratga oshiriladi",
+        "B) Matritsaning ustunlari va satrlari o‘rin almashadi",
+        "C) Diagonal elementlar o‘zgaradi",
+        "D) Faqat ustunlar aylantiriladi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri diagonal matritsa hisoblanadi?",
+      "variantlar": [
+        "A) Faqat ustunlar bo‘yicha 1lar bor",
+        "B) Diagonaldan tashqari barcha elementlar 0",
+        "C) Barcha elementlar 1",
+        "D) Barcha satrlar bir xil"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "A × B ≠ B × A bo‘lishi mumkinmi?",
+      "variantlar": [
+        "A) Hech qachon emas",
+        "B) Faqat nolli matritsalar uchun",
+        "C) Ha, matritsa ko‘paytirishda umumiy almashtirish qoidasi har doim amal qilmaydi",
+        "D) Faqat kvadrat matritsalar uchun"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Nolli matritsa deb nimaga aytiladi?",
+      "variantlar": [
+        "A) Faqat bir diagonalda 0 bo‘lsa",
+        "B) Diagonaldan tashqari 0 bo‘lsa",
+        "C) Barcha elementlari 0 ga teng bo‘lsa",
+        "D) Faqat ustunlari 0 bo‘lsa"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Identik (birlik) matritsaning asosiy xossasi nima?",
+      "variantlar": [
+        "A) Uni boshqa matritsaga qo‘shilsa, o‘sha matritsa olinadi",
+        "B) Har qanday matritsani unga ko‘paytirsa, o‘sha matritsa chiqadi",
+        "C) Uning barcha elementlari 1",
+        "D) Transpozitsiyasi 0 ga teng"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Matritsaning determinantini faqat quyidagilarga hisoblash mumkin:",
+      "variantlar": [
+        "A) Kvadrat matritsalarga",
+        "B) Har qanday matritsaga",
+        "C) Faqat 2x3 matritsaga",
+        "D) Nolli matritsaga"
+      ],
+      "javob": "A"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "sequential",
+    "time": 2
+  }
+}

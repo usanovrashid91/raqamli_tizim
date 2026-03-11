@@ -1,0 +1,107 @@
+{
+  "questions": [
+    {
+      "savol": "Ketma-ketlik limitining ta’rifi qaysi variantda to‘g‘ri keltirilgan?",
+      "variantlar": [
+        "A) Ketma-ketlikda har doim manfiy sonlar bo‘ladi",
+        "B) Har qanday musbat son uchun ketma-ketlik a’zolari berilgan sondan kichik bo‘lishi",
+        "C) Ketma-ketlik a’zolari ma’lum qiymatga cheksiz yaqinlashsa",
+        "D) Ketma-ketlik har doim nolga teng bo‘ladi"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri sonlar ketma-ketligiga misol bo‘ladi?",
+      "variantlar": [
+        "A) Ketma-ketlik o‘suvchi bo‘lishi",
+        "B) Ketma-ketlik a’zolari chegaralangan bo‘lishi",
+        "C) Ketma-ketlik chiziqli bo‘lishi",
+        "D) Ketma-ketlik funksiyaga aylanishi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Cheksiz kichik ketma-ketlik deganda nimani tushunasiz?",
+      "variantlar": [
+        "A) Ketma-ketlikning qiymatlari nolga intilsa",
+        "B) Ketma-ketlikning qiymatlari cheksiz ortib borsa",
+        "C) Har doim manfiy qiymatlar qabul qilsa",
+        "D) O‘zgaruvchilari mavjud bo‘lmasa"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "To‘plamlar ustida qanday amallar bajariladi?",
+      "variantlar": [
+        "A) Ko‘paytirish va bo‘lish",
+        "B) Yig‘indi, ayirma, kesishma, birlashma",
+        "C) Limit va integral",
+        "D) Derivatsiya va induksiya"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Agar limit mavjud bo‘lsa, ketma-ketlik qanday bo‘ladi?",
+      "variantlar": [
+        "A) Har doim o‘suvchi",
+        "B) Yopiq oraliqda",
+        "C) Yig‘iluvchi",
+        "D) Cheksiz kamayuvchi"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Quyidagi ta’riflardan qaysi biri to‘plamni ifodalaydi?",
+      "variantlar": [
+        "A) Har xil elementlardan tashkil topgan ob’ektlar to‘plami",
+        "B) Faqat butun sonlardan iborat ro‘yxat",
+        "C) Matritsalar yig‘indisi-D) Ikki funksiyaning ayirmasi"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "ketma-ketligining limiti nima?",
+      "variantlar": [
+        "A) 1",
+        "B) 0",
+        "C) ∞",
+        "D) –1"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Iqtisodda ketma-ketlik tushunchasi nimani ifodalashi mumkin?",
+      "variantlar": [
+        "A) Faqat narxlarning turg‘unligi",
+        "B) Ma’lumotlarning vaqt bo‘yicha o‘zgarishini",
+        "C) Belgilangan birliklar to‘plamini",
+        "D) Grafik chizish qoidalarini"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "To‘plamlar ustida qanday amallar bajariladi?",
+      "variantlar": [
+        "A) Ko‘paytirish va bo‘lish",
+        "B) Yig‘indi, ayirma, kesishma, birlashma",
+        "C) Limit va integral",
+        "D) Derivatsiya va induksiya"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Limit mavjud bo‘lishi uchun qanday shart bajarilishi kerak?",
+      "variantlar": [
+        "A) Ketma-ketlik o‘suvchi bo‘lishi",
+        "B) Ketma-ketlik a’zolari chegaralangan bo‘lishi-C) Ketma-ketlik chiziqli bo‘lishi",
+        "D) Ketma-ketlik funksiyaga aylanishi"
+      ],
+      "javob": "B"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "random",
+    "time": 20
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "savol": "Funksiya qanday aniqlanadi?",
+      "variantlar": [
+        "A) O‘zgaruvchining har bir qiymatiga yagona qiymat mos bo‘lsa",
+        "B) Har qanday ikki o‘zgaruvchi orasida tenglik mavjud bo‘lsa",
+        "C) O‘zgaruvchi faqat butun son bo‘lsa",
+        "D) Sonlar ketma-ketligi mavjud bo‘lsa"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "Quyidagi berilganlardan qaysi biri ikki o‘zgaruvchili funksiyaga misol bo‘la oladi?",
+      "variantlar": [
+        "A) y =ax+b",
+        "B) z= +",
+        "C) F(X) =",
+        "D) y  ="
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Kobb-Duglas funksiyasi qanday ko‘rinishda ifodalanadi?",
+      "variantlar": [
+        "A) U=ax+by",
+        "B) min(x,y)",
+        "C)U=",
+        "D) to’g’ri  javob  yo’q"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Funksiyaning grafik orqali berilishi qanday usulga kiradi?",
+      "variantlar": [
+        "A) So‘z bilan berilishi",
+        "B) Jadval orqali berilishi",
+        "C) Analitik berilishi",
+        "D) Grafik berilishi"
+      ],
+      "javob": "D"
+    },
+    {
+      "savol": "Funksiya qanday aniqlanadi?",
+      "variantlar": [
+        "A) O‘zgaruvchining har bir qiymatiga yagona qiymat mos bo‘lsa",
+        "B) Har qanday ikki o‘zgaruvchi orasida tenglik mavjud bo‘lsa",
+        "C) O‘zgaruvchi faqat butun son bo‘lsa",
+        "D) Sonlar ketma-ketligi mavjud bo‘lsa"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "Kobb-Duglas funksiyasida α+β=1\\alpha + \\beta = 1α+β=1 bo‘lsa, bu nimani anglatadi?",
+      "variantlar": [
+        "A) Resurslar ortiqcha",
+        "B) Qaytish effekti mavjud",
+        "C) Daromadlar konstant",
+        "D) O‘zgarmas daromadlar qaytishi"
+      ],
+      "javob": "D"
+    },
+    {
+      "savol": "Foydalilik funksiyasi nimani o‘lchaydi?",
+      "variantlar": [
+        "A) Narxni",
+        "B) Iste’molchini xarajatini",
+        "C) Tovarlar afzallik darajasini",
+        "D) Mahsulot miqdorini"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Foydalilik funksiyasi qaysi fanlarda keng qo‘llaniladi?",
+      "variantlar": [
+        "A) Biologiya",
+        "B) Fizika",
+        "C) Iqtisodiyot",
+        "D) Kimyo"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Kobb-Duglas funksiyasida ko‘rsatkichlar α\\alphaα va β\\betaβ nimani bildiradi?",
+      "variantlar": [
+        "A) Mahsulot narxi",
+        "B) Ishchi soni",
+        "C) Har bir resursning ishlab chiqarishga ta’sir darajasi",
+        "D) Xarajatlar miqdori"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Kobb-Duglas funksiyasi qanday ko‘rinishda ifodalanadi?",
+      "variantlar": [
+        "A) U=ax+by",
+        "B) min(x,y)",
+        "C)U=",
+        "D) to’g’ri  javob  yo’q"
+      ],
+      "javob": "C"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "sequential",
+    "time": 20
+  }
+}

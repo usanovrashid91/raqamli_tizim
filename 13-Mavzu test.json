@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "savol": "Funksiya maksimum yoki minimumga ega bo‘lishi uchun qanday shart kerak?",
+      "variantlar": [
+        "A) Funksiya ortuvchi bo‘lishi",
+        "B) Hosila nolga teng bo‘lishi",
+        "C) Limit mavjud bo‘lishi",
+        "D) Hosila manfiy bo‘lishi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Lopytal qoidasidan foydalanish uchun qanday shart bo‘lishi kerak?",
+      "variantlar": [
+        "A) Funksiya uzluksiz bo‘lishi",
+        "B) Aniqmaslik   ko‘rinishida bo‘lishi",
+        "C) Har qanday limit mavjud bo‘lishi",
+        "D) Faqat ko‘paytma mavjud bo‘lishi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Agar f(x) funksiyaning hosilasi ijobiy bo‘lsa, u holda:",
+      "variantlar": [
+        "A) Funksiya kamaymoqda",
+        "B) Funksiya o‘zgarmas",
+        "C) Funksiya ortmoqda",
+        "D) Funksiya maksimumga ega"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri hosilaning iqtisoddagi tatbiqidir?",
+      "variantlar": [
+        "A) Hisoblashning tezkor usuli",
+        "B) Grafik yasash",
+        "C) Marjinal tahlil (chekli o‘sish)",
+        "D) Yillik daromadni topish"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Quyidagi qaysi jumla differensial hisobning asosiy teoremasiga mos keladi?",
+      "variantlar": [
+        "A) Har bir funksiya differensiallanuvchi bo‘ladi.",
+        "B) Integral – hosilaning aksi hisoblanadi.",
+        "C) Har bir limit mavjud bo‘lishi shart emas.",
+        "D) Funksiya har doim uzluksiz bo‘ladi."
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Teylor formulasi nechanchi tartibgacha olinishi mumkin?",
+      "variantlar": [
+        "A) Faqat birinchi",
+        "B) Har qanday natural son tartibigacha",
+        "C) Ikkinchi tartibgacha",
+        "D) Faqat nolinchi tartibgacha"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Lopytal qoidasidan foydalanish uchun qanday shart bo‘lishi kerak?",
+      "variantlar": [
+        "A) Funksiya uzluksiz bo‘lishi",
+        "B) Aniqmaslik   ko‘rinishida bo‘lishi",
+        "C) Har qanday limit mavjud bo‘lishi",
+        "D) Faqat ko‘paytma mavjud bo‘lishi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Teylor formulasi qanday maqsadda qo‘llaniladi?",
+      "variantlar": [
+        "A) Funksiyani chegaralash",
+        "B) Funksiyani chiziqli almashtirish",
+        "C) Funksiyani ko‘p hadli bilan yaqinlashtirish",
+        "D) Funksiya grafigini yasash"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Maclaurin formulasi Teylor formulasining qanday ko‘rinishi?",
+      "variantlar": [
+        "A) Chegara holati",
+        "B) Maxsus hollardan biri – a=0 holatida",
+        "C) Iqtisodiy formulasi",
+        "D) Geometrik o‘xshashlik"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Teylor formulasi qanday maqsadda qo‘llaniladi?",
+      "variantlar": [
+        "A) Funksiyani chegaralash",
+        "B) Funksiyani chiziqli almashtirish",
+        "C) Funksiyani ko‘p hadli bilan yaqinlashtirish",
+        "D) Funksiya grafigini yasash"
+      ],
+      "javob": "C"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "random",
+    "time": 20
+  }
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<title> O‘qituvchi tomonidan testlar yaratish va ulashish sahifasi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { font-family: Arial, sans-serif; background:#f5f7fb; margin:0; padding:20px; }
+  .container { max-width:1000px; margin:auto; background:#fff; padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08); }
+  h1 { text-align:center; color:#0b67d0; }
+  .row { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+  button { background:#0b67d0; color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; }
+  button.secondary { background:#2ea44f; }
+  button:hover { opacity:0.9; }
+  textarea, input, select { width:100%; padding:8px; border:1px solid #ccc; border-radius:8px; }
+  .question { border:1px solid #ddd; padding:10px; border-radius:8px; margin-bottom:10px; }
+  .label { font-weight:bold; margin-top:8px; }
+  .grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+  .small { font-size:12px; color:#666; }
+
+     
+  </style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>📘 O‘qituvchi tomonidan  testlar yaratish va ulashish sahifasi</h1>
+
+  <div class="row">
+    <button id="addQuestion">Savol qo‘shish</button>
+    <button id="downloadJson" class="secondary">JSON saqlash</button>
+    <input type="file" id="docxInput" accept=".docx">
+    <button id="loadDocx">Word testni yuklash</button>
+  </div>
+
+  <div class="grid">
+    <div>
+      <div class="label">Test sozlamalari</div>
+      <label class="small">Savollar soni ko‘rsatilganidan ko‘p bo‘lsa, olib tashlanadi</label>
+      <div class="row">
+        <div style="flex:1">
+          <label>Savollar soni</label>
+          <input type="number" id="questionCount" min="1" value="10">
+        </div>
+        <div style="flex:1">
+          <label>Tartib</label>
+          <select id="orderMode">
+            <option value="sequential">Ketma-ket</option>
+            <option value="random">Aralash</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div style="flex:1">
+          <label>Vaqt (daqiqa)</label>
+          <input type="number" id="testTime" min="1" value="30">
+        </div>
+        <div style="flex:1">
+          <label>Fayl nomi (saqlaganda)</label>
+          <input type="text" id="fileName" value="test.json">
+        </div>
+      </div>
+      <p class="small">LaTeX yozing: $E=mc^2$, \int_0^1 x^2 dx; MathML ham ishlaydi.</p>
+    </div>
+    <div>
+      <div class="label">Google Drive’ga ulashish</div>
+      <ol class="small" style="padding-left:20px">
+        <li>JSON’ni saqlab oling.</li>
+        <li>Google Drive’ga yuklang.</li>
+        <li>Faylda “Share”  → “Поделиться” → “Открыть достип” → “Всеб у кого есть ссылка”  “Читатель”ni tanlang.</li>
+        <li>Linkni oling va talabaga yuboring yoki student sahifaga kiriting.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div id="questions"></div>
+</div>
+
+<script>
+const questionsEl = document.getElementById('questions');
+const addQuestionBtn = document.getElementById('addQuestion');
+const downloadBtn = document.getElementById('downloadJson');
+const loadDocxBtn = document.getElementById('loadDocx');
+const docxInput = document.getElementById('docxInput');
+
+function newQuestion(initial = {}) {
+  const idx = questionsEl.children.length + 1;
+  const wrap = document.createElement('div');
+  wrap.className = 'question';
+  wrap.innerHTML = `
+    <div class="label">Savol ${idx}</div>
+    <textarea class="q-text" rows="2">${initial.savol||''}</textarea>
+    <div class="label">Variantlar</div>
+    ${(initial.variantlar||["","","",""]).map((v,i)=>`<textarea class="q-opt" rows="1">${v}</textarea>`).join("")}
+    <div class="row">
+      <div style="flex:1">
+        <label>To‘g‘ri javob harfi</label>
+        <input class="q-ans" value="${initial.javob||''}">
+      </div>
+    </div>
+  `;
+  questionsEl.appendChild(wrap);
+}
+
+addQuestionBtn.addEventListener('click', ()=> newQuestion());
+
+downloadBtn.addEventListener('click', ()=>{
+  const count = parseInt(document.getElementById('questionCount').value);
+  const order = document.getElementById('orderMode').value;
+  const time = parseInt(document.getElementById('testTime').value);
+  let fileName = document.getElementById('fileName').value.trim() || 'test.json';
+  if(!fileName.endsWith('.json')) fileName += '.json';
+
+  let qs = [];
+  [...questionsEl.children].forEach(block=>{
+    const savol = block.querySelector('.q-text').value.trim();
+    const variantlar = [...block.querySelectorAll('.q-opt')].map(o=>o.value.trim()).filter(Boolean);
+    const javob = (block.querySelector('.q-ans').value.trim() || '').toUpperCase();
+    if(savol && variantlar.length >= 2 && javob){
+      qs.push({ savol, variantlar, javob });
+    }
+  });
+
+  if(order === 'random'){ qs.sort(()=>Math.random()-0.5); }
+  qs = qs.slice(0, count);
+
+  const testData = {
+    questions: qs,
+    settings: { count, order, time }
+  };
+
+  const blob = new Blob([JSON.stringify(testData, null, 2)], {type: "application/json"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = fileName;
+  a.click();
+  URL.revokeObjectURL(url);
+  alert('JSON saqlandi.');
+});
+
+// DOCX yuklash va parse qilish
+loadDocxBtn.addEventListener('click', async ()=>{
+  const file = docxInput.files[0];
+  if(!file){ alert("❌ DOCX fayl tanlanmadi."); return; }
+  const buffer = await file.arrayBuffer();
+  const result = await mammoth.extractRawText({arrayBuffer: buffer});
+  const text = result.value;
+  const lines = text.split(/\n/).map(l=>l.trim()).filter(Boolean);
+
+  let blocks = [], current=[];
+  for(const line of lines){
+    if(line.startsWith('#')){ if(current.length>0) blocks.push(current); current=[line]; }
+    else current.push(line);
+  }
+  if(current.length>0) blocks.push(current);
+
+  blocks.forEach(block=>{
+    const savol = block[0].substring(1).trim();
+    const variantlar=[]; let javob=null;
+    for(let i=1;i<block.length;i++){
+      const line=block[i];
+      if(line.startsWith('+')){ variantlar.push(line.substring(1).trim()); javob=line[1]; }
+      else if(line.startsWith('-')){ variantlar.push(line.substring(1).trim()); }
+    }
+    newQuestion({savol, variantlar, javob});
+  });
+});
+</script>
+</body>
+</html>

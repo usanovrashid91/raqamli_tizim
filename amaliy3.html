@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teskari Matritsa va Xususiyatlar | Usanov Rashid</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+body{font-family:sans-serif;margin:20px;}
+h1,h3,h4{margin-top:20px;}
+input[type=number]{width:60px;margin-right:4px;}
+.matrix-row{margin-bottom:4px;}
+button{margin:5px 0;padding:5px 10px;}
+#3d-graph{width:100%;height:400px;background:#111;}
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo" width="50">
+            <span>Usanov Rashid</span>
+        </div>
+        <nav>
+            <ul class="main-menu">
+                <li><a href="index.html">Bosh menyuu</a></li>
+                <li><a href="maruza.html">Ma'ruza</a></li>
+                <li><a href="amaliy.html">Amaliy</a></li>
+                <li><a href="#">Mustaqil ta'lim</a></li>
+                <li><a href="#">Prezentatsiya</a></li>
+                <li class="more-dropdown">
+                    <span class="more-trigger">More</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="video.html">Video</a></li>
+                        <li><a href="O'qituvchi_uchun.html">O'qituvchi uchun test</a></li>
+						<li><a href="Talaba_uchun.html">Talaba uchun test</a></li>
+                        <li><a href="structure.html">Sayt strukturasi</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="search-container">
+                <img src="search-icon.png" alt="Qidiruv" class="search-icon" width="28">
+                <input type="text" class="search-input" placeholder="Qidiruv...">
+            </div>
+        </nav>
+    </header>
+
+    <main class="lecture-detail">
+        <h6 class="page-title visible">3-Amaliy mashg‘ulot:</h6>
+
+        <div class="pdf-viewer">
+            <embed src="3-amaliy.pdf" type="application/pdf" width="100%" height="600px">
+            <p>Agar PDF ko'rinmasa: <a href="3-amaliy.pdf" target="_blank">Bu yerda oching</a></p>
+        </div>
+        
+<h1>Teskari Matritsa va Xususiyatlar</h1>
+
+<div class="matrix-sizes">
+    <label>Matritsa o‘lchami (n × n): </label>
+    <input id="sizeN" type="number" min="2" value="3"><br>
+    <button id="generate">Matritsa maydonlarini yaratish</button>
+</div>
+
+<div id="matrix-inputs"></div>
+
+<button id="calculate" style="display:none;">Hisoblash</button>
+<button id="show-graph" style="display:none;">3D Grafikni Ko‘rsatish</button>
+
+<h4>Hisoblash bosqichlari:</h4>
+<pre id="steps-output"></pre>
+
+<h4>Natijalar:</h4>
+<pre id="result-output"></pre>
+
+<div id="3d-graph"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+
+    const generateBtn=document.getElementById('generate');
+    const calculateBtn=document.getElementById('calculate');
+    const showGraphBtn=document.getElementById('show-graph');
+    let lastMatrix=null;
+
+    // ===== Matritsa maydonlarini yaratish =====
+    generateBtn.addEventListener('click',()=>{
+        const n=+document.getElementById('sizeN').value;
+        const box=document.getElementById('matrix-inputs');
+        box.innerHTML='';
+        box.appendChild(createMatrixInputs(n));
+        calculateBtn.style.display='inline-block';
+    });
+
+    function createMatrixInputs(n){
+        const div=document.createElement('div');
+        div.innerHTML=`<h4>${n}×${n} matritsa</h4>`;
+        for(let i=0;i<n;i++){
+            const row=document.createElement('div');
+            row.className='matrix-row';
+            for(let j=0;j<n;j++){
+                const input=document.createElement('input');
+                input.type='number';
+                input.dataset.r=i;
+                input.dataset.c=j;
+                row.appendChild(input);
+            }
+            div.appendChild(row);
+        }
+        return div;
+    }
+
+    // ===== Hisoblash =====
+    calculateBtn.addEventListener('click',()=>{
+        const matrix=readMatrix();
+        lastMatrix=matrix;
+        const steps=[];
+        let results="";
+
+        try{
+            const det=determinant(matrix,steps);
+            results+=`Determinant: ${det}\n`;
+            const rankVal=matrixRank(matrix);
+            results+=`Rank: ${rankVal}\n`;
+            if(det!==0){
+                const inv=inverseMatrix(matrix);
+                results+="Teskari Matritsa (Inverse):\n"+matrixToString(inv)+"\n";
+            } else{
+                results+="Matritsa singular, teskari matritsa yo'q\n";
+            }
+        } catch(e){
+            alert("Xato: "+e.message);
+            return;
+        }
+
+        document.getElementById('steps-output').textContent=steps.join('\n');
+        document.getElementById('result-output').textContent=results;
+        showGraphBtn.style.display='inline-block';
+    });
+
+    function readMatrix(){
+        const inputs=[...document.querySelectorAll('input[data-r]')];
+        const n=Math.max(...inputs.map(i=>+i.dataset.r))+1;
+        const m=Array.from({length:n},()=>Array(n).fill(0));
+        inputs.forEach(i=>m[i.dataset.r][i.dataset.c]=Number(i.value||0));
+        return m;
+    }
+
+    function matrixToString(matrix){
+        return matrix.map(r=>r.join('\t')).join('\n');
+    }
+
+    // ===== Determinant =====
+    function determinant(matrix,steps){
+        const n=matrix.length;
+        if(n===1) return matrix[0][0];
+        if(n===2){
+            steps.push(`${matrix[0][0]}*${matrix[1][1]} - ${matrix[0][1]}*${matrix[1][0]} = ${matrix[0][0]*matrix[1][1]-matrix[0][1]*matrix[1][0]}`);
+            return matrix[0][0]*matrix[1][1]-matrix[0][1]*matrix[1][0];
+        }
+        let det=0;
+        for(let j=0;j<n;j++){
+            const sub=minor(matrix,0,j);
+            const cofactor=(j%2===0?1:-1)*matrix[0][j];
+            steps.push(`Cofactor C[1,${j+1}] = (${cofactor}) * det(minor)`);
+            det+=cofactor*determinant(sub,steps);
+        }
+        return det;
+    }
+
+    function minor(matrix,row,col){
+        return matrix.filter((_,i)=>i!==row).map(r=>r.filter((_,j)=>j!==col));
+    }
+
+    // ===== Matritsaning rank =====
+    function matrixRank(matrix){
+        const m=matrix.map(r=>r.slice());
+        const n=m.length;
+        let rank=n;
+        for(let row=0;row<rank;row++){
+            if(m[row][row]){
+                for(let col=0;col<n;col++){
+                    if(col!==row){
+                        const mult=m[col][row]/m[row][row];
+                        for(let i=0;i<rank;i++) m[col][i]-=mult*m[row][i];
+                    }
+                }
+            } else{
+                let reduce=true;
+                for(let i=row+1;i<n;i++){
+                    if(m[i][row]){
+                        [m[row],m[i]]=[m[i],m[row]];
+                        reduce=false;
+                        break;
+                    }
+                }
+                if(reduce){ rank--; for(let i=0;i<n;i++) m[i][row]=m[i][rank]; }
+                row--;
+            }
+        }
+        return rank;
+    }
+
+    // ===== Teskari matritsa =====
+    function inverseMatrix(matrix){
+        const n=matrix.length;
+        const m=matrix.map(r=>r.slice());
+        const identity=Array.from({length:n},(_,i)=>Array.from({length:n},(_,j)=>i===j?1:0));
+        for(let i=0;i<n;i++){
+            let diag=m[i][i];
+            if(diag===0){
+                for(let j=i+1;j<n;j++){
+                    if(m[j][i]!==0){
+                        [m[i],m[j]]=[m[j],m[i]];
+                        [identity[i],identity[j]]=[identity[j],identity[i]];
+                        diag=m[i][i];
+                        break;
+                    }
+                }
+            }
+            if(diag===0) throw new Error("Matritsa singular, inverse yo'q");
+            for(let j=0;j<n;j++){
+                m[i][j]/=diag;
+                identity[i][j]/=diag;
+            }
+            for(let k=0;k<n;k++){
+                if(k!==i){
+                    const factor=m[k][i];
+                    for(let j=0;j<n;j++){
+                        m[k][j]-=factor*m[i][j];
+                        identity[k][j]-=factor*identity[i][j];
+                    }
+                }
+            }
+        }
+        return identity;
+    }
+
+    // ===== 3D Grafik =====
+    showGraphBtn.addEventListener('click',()=>{
+        if(lastMatrix) render3DGraph(lastMatrix);
+    });
+
+    function render3DGraph(matrix){
+        const container=document.getElementById('3d-graph');
+        container.innerHTML='';
+        const scene=new THREE.Scene();
+        scene.background=new THREE.Color(0x111111);
+
+        const camera=new THREE.PerspectiveCamera(60,container.clientWidth/400,0.1,1000);
+        camera.position.set(10,10,15);
+        camera.lookAt(0,0,0);
+
+        const renderer=new THREE.WebGLRenderer({antialias:true});
+        renderer.setSize(container.clientWidth,400);
+        container.appendChild(renderer.domElement);
+
+        const light=new THREE.PointLight(0xffffff,1);
+        light.position.set(10,20,20);
+        scene.add(light);
+
+        const geometry=new THREE.SphereGeometry(0.2,32,32);
+        const spheres=[];
+        const n=matrix.length;
+
+        for(let i=0;i<n;i++){
+            for(let j=0;j<n;j++){
+                const material=new THREE.MeshStandardMaterial({
+                    color:new THREE.Color().setHSL(j/n,1,0.5 + matrix[i][j]/100)
+                });
+                const sphere=new THREE.Mesh(geometry,material);
+                sphere.position.set(j-n/2, -i+n/2, matrix[i][j]/5);
+                scene.add(sphere);
+                spheres.push({mesh:sphere,angle:0});
+            }
+        }
+
+        function animate(){
+            requestAnimationFrame(animate);
+            spheres.forEach((s,index)=>{
+                s.angle+=0.01+index*0.002;
+                s.mesh.position.x+=Math.sin(s.angle)/50;
+                s.mesh.position.z+=Math.cos(s.angle)/50;
+            });
+            renderer.render(scene,camera);
+        }
+        animate();
+    }
+
+});
+</script>
+
+</body>
+</html>

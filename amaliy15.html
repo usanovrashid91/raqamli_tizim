@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<title>Amaliy mashg'ulot 15 | Aniqmas integral</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<style>
+body{font-family:sans-serif;margin:20px;}
+h1,h2,h3{margin:10px 0}
+.section{background:#fff;padding:15px;border-radius:12px;margin-bottom:25px;box-shadow:0 0 12px rgba(0,0,0,.1)}
+input{width:260px;margin:6px}
+button{padding:7px 18px;margin:6px}
+pre{background:#111;color:#0f0;padding:12px;border-radius:8px;overflow:auto}
+#graph{width:100%;height:450px;background:#000;border-radius:12px}
+label{display:block;margin-top:8px;font-weight:bold}
+small{color:#555}
+</style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo" width="50">
+            <span>Usanov Rashid</span>
+        </div>
+        <nav>
+            <ul class="main-menu">
+                <li><a href="index.html">Bosh menyuu</a></li>
+                <li><a href="maruza.html">Ma'ruza</a></li>
+                <li><a href="amaliy.html">Amaliy</a></li>
+                <li><a href="#">Mustaqil ta'lim</a></li>
+                <li><a href="#">Prezentatsiya</a></li>
+                <li class="more-dropdown">
+                    <span class="more-trigger">More</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="video.html">Video</a></li>
+                        <li><a href="O'qituvchi_uchun.html">O'qituvchi uchun test</a></li>
+						<li><a href="Talaba_uchun.html">Talaba uchun test</a></li>
+                        <li><a href="structure.html">Sayt strukturasi</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="search-container">
+                <img src="search-icon.png" alt="Qidiruv" class="search-icon" width="28">
+                <input type="text" class="search-input" placeholder="Qidiruv...">
+            </div>
+        </nav>
+    </header>
+
+    <main class="lecture-detail">
+        <h6 class="page-title visible">15-Amaliy mashg'ulot:</h6>
+
+        <div class="pdf-viewer">
+            <embed src="15-amaliy.pdf" type="application/pdf" width="100%" height="600px">
+            <p>Agar PDF ko'rinmasa: <a href="15-amaliy.pdf" target="_blank">Bu yerda oching</a></p>
+        </div>
+
+<h1>📘 Amaliy mashg'ulot 15</h1>
+<h2>Aniqmas integral</h2>
+
+<!-- ================= KIRITISH ================= -->
+<div class="section">
+<h3>1️⃣ Integralni kiriting</h3>
+
+<label>∫ f(x) dx</label>
+<input id="func" value="x^2">
+
+<label>Grafik oralig‘i</label>
+<input id="min" value="-5">
+<input id="max" value="5">
+
+<small>
+Misollar:<br>
+• x²<br>
+• x³ + 2x<br>
+• sin(x)<br>
+• cos(x)<br>
+• e^x<br>
+• 1/x
+</small><br>
+
+<button id="calc">Hisoblash</button>
+<button id="graphBtn">3D grafik</button>
+</div>
+
+<!-- ================= BOSQICHLAR ================= -->
+<div class="section">
+<h3>📑 Hisoblash bosqichlari</h3>
+<pre id="steps"></pre>
+</div>
+
+<!-- ================= NATIJA ================= -->
+<div class="section">
+<h3>📊 Natija</h3>
+<pre id="result"></pre>
+</div>
+
+<div id="graph"></div>
+
+<script>
+let pointsF=[], pointsInt=[];
+
+// ================= HISOBLASH =================
+document.getElementById("calc").onclick=()=>{
+  const f=V("func");
+  const min=+V("min"), max=+V("max");
+  const steps=[], res=[];
+
+  const F=integralFormula(f);
+
+  steps.push("1️⃣ Berilgan integral:");
+  steps.push(`∫(${f}) dx`);
+
+  if(F){
+    steps.push("\n2️⃣ Asosiy integral formulasi:");
+    steps.push(`∫(${f}) dx = ${F} + C`);
+    res.push(`Natija: ${F} + C`);
+  }else{
+    steps.push("\n2️⃣ Analitik integral topilmadi");
+    steps.push("Numerik va grafik usuldan foydalaniladi");
+    res.push("Natija: Grafik orqali tahlil");
+  }
+
+  // Grafik nuqtalari
+  pointsF=[]; pointsInt=[];
+  let acc=0, dx=0.05;
+
+  for(let x=min;x<=max;x+=dx){
+    try{
+      let y=evalF(f,x);
+      acc+=y*dx;
+      pointsF.push({x,y});
+      pointsInt.push({x, y:acc});
+    }catch(e){}
+  }
+
+  document.getElementById("steps").textContent=steps.join("\n");
+  document.getElementById("result").textContent=res.join("\n");
+};
+
+// ================= 3D GRAFIK =================
+document.getElementById("graphBtn").onclick=()=>{
+  drawGraph();
+};
+
+function drawGraph(){
+  const box=document.getElementById("graph");
+  box.innerHTML="";
+
+  const scene=new THREE.Scene();
+  scene.background=new THREE.Color(0x050510);
+
+  const camera=new THREE.PerspectiveCamera(60,box.clientWidth/450,0.1,1000);
+  camera.position.set(12,12,16);
+  camera.lookAt(0,0,0);
+
+  const renderer=new THREE.WebGLRenderer({antialias:true});
+  renderer.setSize(box.clientWidth,450);
+  box.appendChild(renderer.domElement);
+
+  scene.add(new THREE.AxesHelper(6));
+  scene.add(new THREE.AmbientLight(0xffffff,1));
+
+  drawCurve(pointsF,0xff3333);     // f(x)
+  drawCurve(pointsInt,0x00ffcc);   // F(x)
+
+  function drawCurve(data,color){
+    const geom=new THREE.SphereGeometry(0.08,12,12);
+    data.forEach(p=>{
+      const m=new THREE.MeshBasicMaterial({color});
+      const s=new THREE.Mesh(geom,m);
+      s.position.set(p.x,p.y,0);
+      scene.add(s);
+    });
+  }
+
+  function animate(){
+    requestAnimationFrame(animate);
+    scene.rotation.y+=0.003;
+    scene.rotation.x+=0.002;
+    renderer.render(scene,camera);
+  }
+  animate();
+}
+
+// ================= INTEGRAL FORMULALAR =================
+function integralFormula(f){
+  f=f.replace(/\s+/g,"");
+
+  if(f==="x") return "x²/2";
+  if(f==="x^2") return "x³/3";
+  if(f==="x^3") return "x⁴/4";
+  if(f==="sin(x)") return "-cos(x)";
+  if(f==="cos(x)") return "sin(x)";
+  if(f==="e^x") return "e^x";
+  if(f==="1/x") return "ln|x|";
+
+  let m=f.match(/^x\^(\d+)$/);
+  if(m){
+    let n=+m[1]+1;
+    return `x^${n}/${n}`;
+  }
+  return null;
+}
+
+// ================= YORDAMCHI =================
+function V(id){return document.getElementById(id).value}
+
+function evalF(expr,x){
+  expr=expr.replaceAll("^","**");
+  return Function("x","with(Math){return "+expr+"}")(x);
+}
+</script>
+
+</body>
+</html>

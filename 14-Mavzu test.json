@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "savol": "Takroriy limit bilan karrali limit o‘rtasidagi farq nimada?",
+      "variantlar": [
+        "A) Bitta yo‘l bilan olinadi",
+        "B) O‘zgaruvchilar ketma-ket limitga yaqinlashadi yoki bir vaqtda yaqinlashadi",
+        "C) Faqat birinchi tartibli funksiyalar uchun ishlatiladi",
+        "D) Hech qanday farqi yo‘q"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri ko‘p o‘zgaruvchili funksiyaga misol bo‘la oladi?",
+      "variantlar": [
+        "A) 3x+4",
+        "B) =  +",
+        "C) 2x+3",
+        "D) 5x-4"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Quyidagi ifoda nimani anglatadi: ​f ?",
+      "variantlar": [
+        "A) Xususiy hosila",
+        "B) Ikkinchi tartibli xususiy hosila",
+        "C) Birinchi tartibli to‘la differensial",
+        "D) Integral"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Karrali limit nima?",
+      "variantlar": [
+        "A) Bitta yo‘nalishda hisoblanadigan limit",
+        "B) Har bir o‘zgaruvchi bo‘yicha alohida hisoblanadigan limit",
+        "C) Ikkita yoki undan ortiq o‘zgaruvchi bilan hisoblanadigan limit",
+        "D) Limit mavjud emasligini bildiradi"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Ko‘p o‘zgaruvchili funksiyada xususiy hosilalarning mavjudligi nimani bildiradi?",
+      "variantlar": [
+        "A) Funksiya chiziqli",
+        "B) Funksiya doimiy",
+        "C) Har bir o‘zgaruvchi bo‘yicha funksiya differensiallanuvchi",
+        "D) Funksiya limitga ega emas"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri ko‘p o‘zgaruvchili funksiyaga misol bo‘la oladi?",
+      "variantlar": [
+        "A) 3x+4",
+        "B) =  +",
+        "C) 2x+3",
+        "D) 5x-4"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Karrali limit nima?",
+      "variantlar": [
+        "A) Bitta yo‘nalishda hisoblanadigan limit",
+        "B) Har bir o‘zgaruvchi bo‘yicha alohida hisoblanadigan limit",
+        "C) Ikkita yoki undan ortiq o‘zgaruvchi bilan hisoblanadigan limit",
+        "D) Limit mavjud emasligini"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Ko‘p o‘zgaruvchili funksiyada xususiy hosila nima?",
+      "variantlar": [
+        "A) Barcha o‘zgaruvchilar bo‘yicha bir vaqtning o‘zida olinadigan hosila",
+        "B) Faqat bir o‘zgaruvchiga nisbatan olinadigan hosila",
+        "C) Limitga teng",
+        "D) Derivativga teng"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "To‘la differensial qanday amaliy ahamiyatga ega?",
+      "variantlar": [
+        "A) Hosilalar orasidagi farqni topadi",
+        "B) Yaqin nuqtadagi qiymatlarni taxminlashda ishlatiladi",
+        "C) Faqat geometriyada ishlatiladi",
+        "D) Limitlarni taqqoslaydi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Agar z=f(x,y) unda    nimani bildiradi?",
+      "variantlar": [
+        "A) xxx ga nisbatan o‘zgarish darajasi",
+        "B) yyy ga nisbatan o‘zgarish darajasi",
+        "C) Umumiy hosila",
+        "D) To‘la integral"
+      ],
+      "javob": "A"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "random",
+    "time": 20
+  }
+}

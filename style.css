@@ -1,0 +1,465 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: white;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Floating particles */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: float 20s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50px); }
+}
+
+header {
+    background: rgba(33, 150, 243, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.logo img {
+    margin-right: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #a0e7ff;
+}
+
+.search input {
+    padding: 10px 15px;
+    border-radius: 30px;
+    border: none;
+    width: 220px;
+    outline: none;
+}
+
+/* Banner matni */
+.banner {
+    text-align: center;
+    font-size: 2.3em;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 1.6;
+    margin: 100px auto 80px;
+    max-width: 90%;
+    position: relative;
+    z-index: 1;
+}
+
+.banner .line {
+    display: block;
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 1s ease;
+}
+
+.banner .line.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Rasmlar */
+.images {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    margin: 60px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.images img {
+    width: 280px;
+    max-width: 90%;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 1.2s ease;
+}
+
+.images img.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer {
+    background: rgba(33, 150, 243, 0.85);
+    padding: 20px;
+    text-align: center;
+    font-size: 1.1em;
+    position: relative;
+    z-index: 1;
+    margin-top: 100px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .banner { font-size: 1.6em; }
+    .images { flex-direction: column; align-items: center; gap: 30px; }
+    header { flex-direction: column; gap: 15px; }
+    nav ul { flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .search input { width: 100%; max-width: 300px; }
+}
+
+/* Lessons sahifalari uchun maxsus stil */
+.lessons-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.page-title {
+    font-size: 3.5em;
+    margin-bottom: 60px;
+    background: linear-gradient(90deg, #64b5f6, #bb86fc, #03dac6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: all 1s ease;
+}
+
+.page-title.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.lesson-btn {
+    padding: 30px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    text-decoration: none;
+    font-size: 1.6em;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+    position: relative;
+    overflow: hidden;
+}
+
+.lesson-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s;
+}
+
+.lesson-btn:hover::before {
+    left: 100%;
+}
+
+.lesson-btn:hover {
+    transform: translateY(-15px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+.lesson-btn.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.extra-note {
+    margin-top: 80px;
+    font-size: 1.4em;
+    background: rgba(33, 150, 243, 0.2);
+    padding: 20px 40px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+}
+
+/* Mobil moslashuv */
+@media (max-width: 768px) {
+    .page-title { font-size: 2.5em; }
+    .buttons-grid { grid-template-columns: 1fr; }
+    .lesson-btn { font-size: 1.4em; padding: 25px; }
+}
+
+/* Search icon va input */
+.search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.search-icon:hover {
+    transform: scale(1.2);
+}
+
+.search-input {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 0;
+    opacity: 0;
+    transition: width 0.4s, opacity 0.4s;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    background: white;
+    color: #333;
+}
+
+.search-input.visible {
+    width: 200px;
+    opacity: 1;
+}
+
+/* More dropdown */
+.more-dropdown {
+    position: relative;
+}
+
+.more-trigger {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(33, 150, 243, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    list-style: none;
+    padding: 10px;
+    min-width: 150px;
+    z-index: 20;
+    animation: dropdownOpen 0.3s ease;
+}
+
+.more-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    margin: 10px 0;
+}
+
+.dropdown-menu a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+@keyframes dropdownOpen {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header va navigatsiya */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.main-menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.main-menu a, .more-trigger {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.main-menu a:hover, .more-trigger:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Qidiruv – faqat icon, bosilganda ochiladi */
+.search-container {
+    position: relative;
+}
+
+.search-icon {
+    cursor: pointer;
+    filter: brightness(0) invert(1); /* Oq rangga aylantirish uchun */
+    transition: transform 0.3s;
+}
+
+.search-icon:hover {
+    transform: scale(1.15);
+}
+
+.search-input {
+    position: absolute;
+    right: 0;
+    top: 50px; /* Pastga tushadi */
+    width: 250px;
+    padding: 12px 40px 12px 20px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.4s ease;
+    background: white;
+    color: #333;
+}
+
+.search-input.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* More dropdown – faqat hoverda ochiladi */
+.more-dropdown {
+    position: relative;
+}
+
+.more-trigger {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(30, 50, 100, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    padding: 15px 0;
+    min-width: 180px;
+    list-style: none;
+    backdrop-filter: blur(10px);
+}
+
+.more-dropdown:hover .dropdown-menu {
+    display: block;
+    animation: dropdownFade 0.3s ease;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 25px;
+    color: white;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+@keyframes dropdownFade {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.lecture-detail {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pdf-viewer {
+    margin-bottom: 40px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.interactive-panel.visible {
+    display: block !important; /* Har doim ko'rinadi */
+}

@@ -1,0 +1,108 @@
+{
+  "questions": [
+    {
+      "savol": "Ikki vektor orasidagi burchakni topishda qanday ko‘paytma ishlatiladi?",
+      "variantlar": [
+        "A) Aralash ko‘paytma",
+        "B) Skalyar ko‘paytma",
+        "C) Vektor ko‘paytma",
+        "D) To‘g‘ri chiziq"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Ellipsda asosiy o‘qlar uzunliklari nimani ifodalaydi?",
+      "variantlar": [
+        "A) To‘g‘ri chiziqning koordinatalarini",
+        "B) Giperbola simmetriyasi",
+        "C) Markazdan fokuslargacha bo‘lgan masofani",
+        "D) Katta va kichik yarim o‘qlar uzunliklarini"
+      ],
+      "javob": "D"
+    },
+    {
+      "savol": "Skalyar ko‘paytmaning natijasi qanday son bo‘ladi?",
+      "variantlar": [
+        "A) Matritsa",
+        "B) Koordinata",
+        "C) Vektor",
+        "D) Skalyar (oddiy son)"
+      ],
+      "javob": "D"
+    },
+    {
+      "savol": "Talab va taklif chiziqlarining kesishgan nuqtasi nimani bildiradi?",
+      "variantlar": [
+        "A) Narxlarning maksimal darajasi",
+        "B) Talab yo‘qligini",
+        "C) Muvozanat holatini",
+        "D) Xarid hajmining pasayishini"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Ellipsda asosiy o‘qlar uzunliklari nimani ifodalaydi?",
+      "variantlar": [
+        "A) To‘g‘ri chiziqning koordinatalarini",
+        "B) Giperbola simmetriyasi",
+        "C) Markazdan fokuslargacha bo‘lgan masofani",
+        "D) Katta va kichik yarim o‘qlar uzunliklarini"
+      ],
+      "javob": "D"
+    },
+    {
+      "savol": "Giperbolaning kanonik tenglamasi qaysi?",
+      "variantlar": [
+        "A)  -   =1",
+        "B)  - =1",
+        "C)"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Ellipsning kanonik tenglamasi qaysi?",
+      "variantlar": [
+        "A)  + =1",
+        "B) ax+by +c=0",
+        "C) ax=by=c=0",
+        "D) Y="
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "Koordinata tekisligida to‘g‘ri chiziqning umumiy tenglamasi qanday?",
+      "variantlar": [
+        "A) ax+by+c =0",
+        "B) x〗^2+y^2=r^2",
+        "C) Y=++c",
+        "D) Y="
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "Agar ikki vektor vektor ko‘paytmasi nolga teng bo‘lsa, ular qanday",
+      "variantlar": [
+        "A) Perpendikulyar",
+        "B) Parallelik",
+        "C) Komplanar",
+        "D) Qarama-qarshi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "To‘g‘ri chiziqning yo‘nalish vektori nima uchun ishlatiladi?",
+      "variantlar": [
+        "A) Burchakni o‘lchash uchun",
+        "B) Chiziqning qiyaligini aniqlash uchun",
+        "C) Parabolani yasash uchun",
+        "D) Giperbolani chizish uchun"
+      ],
+      "javob": "B"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "random",
+    "time": 20
+  }
+}

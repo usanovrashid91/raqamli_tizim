@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "savol": "T(𝑥) = A𝑥 operatorining matritsasi nima?",
+      "variantlar": [
+        "A) A",
+        "B) x",
+        "C) T",
+        "D) A⁻¹"
+      ],
+      "javob": "A"
+    },
+    {
+      "savol": "Maxsus qiymat (eigenvalue) lambda qanday topiladi?",
+      "variantlar": [
+        "A) A𝑥 = x",
+        "B) (A − λI) = 1",
+        "C) det(A − λI) = 0",
+        "D) A = λI"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Rank-Nullity teoremasi qanday ifodalanadi?",
+      "variantlar": [
+        "A) rank(A) + nullity(A) = 0",
+        "B) rank(T) + dim(ker T) = dim(V)",
+        "C) rank(T) = det(T)",
+        "D) rank = maxsus qiymatlar soni"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "T(𝑥 + y) = T(𝑥) + T(y), T(c𝑥) = cT(𝑥) shartlari nimani bildiradi?",
+      "variantlar": [
+        "A) Operator nolga teng",
+        "B) Operator oddiy tasvir",
+        "C) Operator chiziqli ekanini",
+        "D) Operator determinanti 1 ekanini"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri chiziqli operator emas?",
+      "variantlar": [
+        "A) T(𝑥) = 2𝑥",
+        "B) T(𝑥) = 𝑥 + 5",
+        "C) T(𝑥) = 3𝑥",
+        "D) T(𝑥) = −𝑥"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Chiziqli operatorning asosiy xossalaridan biri qaysi?",
+      "variantlar": [
+        "A) T(𝑥 + y) = T(𝑥) × T(y)",
+        "B) T(𝑥 + y) = T(𝑥) + T(y)",
+        "C) T(𝑥y) = T(𝑥) + T(y)",
+        "D) T(𝑥/y) = T(𝑥) + T(y)"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri chiziqli operator uchun to‘g‘ri?",
+      "variantlar": [
+        "A) T(c𝑥) = T(𝑥) + c",
+        "B) T(c𝑥) = cT(𝑥)",
+        "C) T(c𝑥) = c + T(𝑥)",
+        "D) T(c𝑥) = T(𝑥)/c"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Chiziqli operatorning yadro (kernel) nima?",
+      "variantlar": [
+        "A) Operatorni buzadigan qiymatlar to‘plami",
+        "B) T(𝑥) = 0 bo‘ladigan 𝑥 lar to‘plami",
+        "C) T(𝑥) = 1 bo‘ladigan 𝑥 lar to‘plami",
+        "D) Null qiymatli determinantlar"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "T(𝑥) = λ𝑥 bo‘lsa, 𝑥 qanday vektor?",
+      "variantlar": [
+        "A) Nolinchi vector",
+        "B) Maxsus vector",
+        "C) Asosiy vector",
+        "D) Determinant vektori"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Obraz nima?",
+      "variantlar": [
+        "A) Har qanday operatorni 0 ga o‘tkazuvchi to‘plam",
+        "B) Operatorni inverse",
+        "C) T orqali olinadigan barcha vektorlar to‘plami",
+        "D) Yadro bilan teng to‘plam"
+      ],
+      "javob": "C"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "random",
+    "time": 20
+  }
+}

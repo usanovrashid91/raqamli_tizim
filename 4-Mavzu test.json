@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "savol": "Quyidagi terminlardan qaysi biri chiziqli tenglamalar sistemasida aniqmas sistema degan tushunchani ifodalaydi?",
+      "variantlar": [
+        "A) Yechim yo‘q",
+        "B) Yagona yechim mavjud",
+        "C) Cheksiz ko‘p yechim mavjud",
+        "D) Teskari matritsa mavjud"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Gauss usuli orqali sistema yechilganda birinchi qadam nima?",
+      "variantlar": [
+        "A) Oraliq natijani chop etish",
+        "B) Ikkinchi ustunni nolga aylantirish",
+        "C) Uchburchak ko‘rinishga keltirish",
+        "D) Determinant hisoblash"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Quyidagi terminlardan qaysi biri CHTS uchun to‘g‘ri:",
+      "variantlar": [
+        "A) Erkin hadlar matritsasi",
+        "B) Koefitsientlar matritsasi",
+        "C) Yechimlar vektori",
+        "D) Determinant"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri tayanch ibora emas?",
+      "variantlar": [
+        "A) noma’lum",
+        "B) aniqmas sistema",
+        "C) satr vektori",
+        "D) determinant"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Qachon sistema birgalikda bo‘lmagan deyiladi?",
+      "variantlar": [
+        "A) Cheksiz yechimga ega bo‘lsa",
+        "B) Hech qanday yechimga ega bo‘lmasa",
+        "C) Yagona yechim bo‘lsa",
+        "D) Har bir noma’lum uchun ikkita yechim bo‘lsa"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Gauss-Jordan usulining Gauss usulidan farqi nimada?",
+      "variantlar": [
+        "A) Matritsa determinantini hisoblaydi",
+        "B) Faqat yuqori uchburchak shakl hosil qiladi",
+        "C) To‘liq diagonal shaklga keltiriladi",
+        "D) Qayta orqaga yo‘nalgan almashtirish kerak"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Nima sababdan iqtisodiy modellar chiziqli tenglamalar sistemasida ifodalanadi?",
+      "variantlar": [
+        "A) Sababi ular chiroyli ko‘rinadi",
+        "B) Sababi ular grafik jihatdan oddiy",
+        "C) Chunki ular ko‘p o‘zgaruvchili tahlilni ifodalaydi",
+        "D) Sababi ularni faqat matematiklar yechadi"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "3 ta noma’lum va 3 ta tenglama berilgan sistemaning yechim holatini aniqlash uchun nima qilinadi?",
+      "variantlar": [
+        "A) Teskari matritsa topiladi",
+        "B) Matritsaning rangiga qarab baholanadi",
+        "C) Matritsa determinanti topiladi",
+        "D) Erkin hadlar yig‘indisi olinadi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Gauss usuli qanday algebraik vositaga asoslanadi?",
+      "variantlar": [
+        "A) Determinantlar",
+        "B) Matritsalarni transpozitsiyalash",
+        "C) Elementar satr almashtirishlar",
+        "D) Skalyar ko‘paytma"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Chiziqli algebraik tenglamalar sistemasining umumiy ko‘rinishi qanday?",
+      "variantlar": [
+        "A) Ax = b",
+        "B) x + y = z",
+        "C) x² + y² = z",
+        "D) Ax² + Bx + C = 0"
+      ],
+      "javob": "A"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "random",
+    "time": 20
+  }
+}

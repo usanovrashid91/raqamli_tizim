@@ -1,0 +1,89 @@
+{
+  "questions": [
+    {
+      "savol": "Aniqmas integral qanday belgilanadi?",
+      "variantlar": [
+        "A)",
+        "B)",
+        "C)",
+        "D) F’(x)"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Boshlang‘ich funksiya nima?",
+      "variantlar": [
+        "A) Funksiyaning limitidir",
+        "B) Hosilasi berilgan funksiyaga teng bo‘lgan funksiyadir",
+        "C) Matritsaning determinant",
+        "D) Faqat to‘g‘ri chiziqlar uchun aniqlanadi"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri ko‘p o‘zgaruvchili funksiyaga misol bo‘la oladi?",
+      "variantlar": [
+        "A) 3x+4",
+        "B) =  +",
+        "C) 2x+3",
+        "D) 5x-4"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Takroriy limit bilan karrali limit o‘rtasidagi farq nimada?",
+      "variantlar": [
+        "A ) Bitta yo‘l bilan olinadi",
+        "B) O‘zgaruvchilar ketma-ket limitga yaqinlashadi yoki bir vaqtda yaqinlashadi",
+        "C) Faqat birinchi tartibli funksiyalar uchun ishlatiladi",
+        "D) Hech qanday farqi yo‘q"
+      ],
+      "javob": "B"
+    },
+    {
+      "savol": "Quyidagilardan qaysi biri aniqmas integralni hisoblash usuli hisoblanadi?",
+      "variantlar": [
+        "A) Determinant usuli",
+        "B) Matritsa usuli",
+        "C) Bo‘laklab integrallash usuli",
+        "D) Xususiy hosila usuli"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Elementar funksiyalarning boshlang‘ich funksiyalari qayerda to‘plangan?",
+      "variantlar": [
+        "A) Hosilalar jadvalidan olinadi",
+        "B) Matritsa formulalari ichida",
+        "C) Maxsus boshlang‘ich funksiyalar jadvalida",
+        "D) Gauss-Jordan usulida"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Aniqmas integralda “C” belgisi nimani bildiradi?",
+      "variantlar": [
+        "A) To‘liq funksiya",
+        "B) Integralning qiymatini",
+        "C) Ixtiyoriy doimiy",
+        "D) Ko‘paytma"
+      ],
+      "javob": "C"
+    },
+    {
+      "savol": "Boshlang‘ich funksiya nima?",
+      "variantlar": [
+        "A) Funksiyaning limitidir",
+        "B) Hosilasi berilgan funksiyaga teng bo‘lgan funksiyadir",
+        "C) Matritsaning determinanti",
+        "D) Faqat to‘g‘ri chiziqlar uchun aniqlanadi"
+      ],
+      "javob": "B"
+    }
+  ],
+  "settings": {
+    "count": 10,
+    "order": "random",
+    "time": 20
+  }
+}
