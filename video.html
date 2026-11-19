@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video — Usanov Rashid</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        .vd-page { max-width: 1200px; margin: 0 auto; padding: 32px 20px 56px; font-family: "Segoe UI", Calibri, Arial, sans-serif; color: #1F2933; }
+        .vd-head { text-align: center; margin-bottom: 32px; }
+        .vd-head h1 { font-size: 30px; margin: 0 0 8px; color: #14213D; }
+        .vd-head p { margin: 0; color: #52606D; font-size: 16px; }
+        .vd-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 26px; }
+        .vd-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(20,33,61,.12); display: flex; flex-direction: column; }
+        .vd-player { position: relative; aspect-ratio: 16 / 9; background: #0b1324; }
+        .vd-player video { width: 100%; height: 100%; display: block; background: #0b1324; }
+        .vd-missing { position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; color: #CADCFC; font-size: 15px; gap: 8px; text-align: center; padding: 16px; }
+        .vd-missing b { font-size: 40px; color: #E9762B; }
+        .vd-card.no-file .vd-missing { display: flex; }
+        .vd-card.no-file video { visibility: hidden; }
+        .vd-card.no-file .vd-dl { display: none; }
+        .vd-body { padding: 16px 20px 20px; }
+        .vd-tag { display: inline-block; background: #E6F2F3; color: #0E7C86; font-weight: 700; font-size: 12px; padding: 3px 10px; border-radius: 12px; margin-bottom: 8px; }
+        .vd-body h2 { font-size: 17px; line-height: 1.35; margin: 0 0 12px; color: #14213D; }
+        .vd-dl { font-size: 14px; color: #0E7C86; font-weight: 600; text-decoration: none; }
+        .vd-dl:hover { text-decoration: underline; }
+        .vd-empty { text-align: center; color: #7B8794; padding: 30px; display: none; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo" width="50">
+            <span>Usanov Rashid</span>
+        </div>
+
+        <nav>
+            <ul class="main-menu">
+                <li><a href="index.html">Bosh menyu</a></li>
+                <li><a href="maruza.html">Ma'ruza</a></li>
+                <li><a href="amaliy.html">Amaliy</a></li>
+                <li><a href="#">Mustaqil ta'lim</a></li>
+                <li><a href="prezentatsiya.html">Prezentatsiya</a></li>
+                <li class="more-dropdown">
+                    <span class="more-trigger">More</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="video.html" aria-current="page">Video</a></li>
+                        <li><a href="O'qituvchi_uchun.html">O'qituvchi uchun test</a></li>
+                        <li><a href="Talaba_uchun.html">Talaba uchun test</a></li>
+                        <li><a href="structure.html">Sayt strukturasi</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="search-container">
+                <img src="assets/images/search-icon.png" alt="Qidiruv" class="search-icon" width="28">
+                <input type="text" class="search-input" id="vd-search" placeholder="Qidiruv...">
+            </div>
+        </nav>
+    </header>
+
+    <main class="vd-page">
+        <div class="vd-head">
+            <h1>Video darslar</h1>
+            <p>Kompyuter matematika tizimlari va MATLAB fanidan video materiallar.</p>
+        </div>
+        <div class="vd-grid" id="vd-grid"></div>
+        <p class="vd-empty" id="vd-empty">Qidiruv bo‘yicha video topilmadi.</p>
+    </main>
+
+    <footer>
+        © 2025 Usanov Rashid | Raqamlashtirish va kompyuter modellash metodikasi
+    </footer>
+
+    <script>
+        // Video qo'shish yoki nomini o'zgartirish: shu ro'yxatni tahrirlang.
+        // fayl — index.html yonidagi video fayl nomi (kengaytmasi bilan).
+        const VIDEOLAR = [
+            { n: 1, nom: "Kompyuter matematika tizimlari tarixi. MATLAB tizimining vazifalari va imkoniyatlari", fayl: "Video (1).mp4" },
+            { n: 2, nom: "MATLAB’ning asosiy obyektlari. Ma’lumotlarni tashkil qilish va tasvirlash", fayl: "Video (2).mp4" },
+            { n: 3, nom: "Arifmetik va mantiqiy amallar. Vektorlar va matritsalar ustida amallar", fayl: "Video (3).mp4" },
+            { n: 4, nom: "Dasturlash asoslari. MATLAB’da ma’lumot va fayl toifalari", fayl: "Video (4).mp4" },
+            { n: 5, nom: "M-fayl funksiyalari. Lokal va global o‘zgaruvchilar", fayl: "Video (5).mp4" }
+        ];
+        const grid = document.getElementById("vd-grid");
+
+        VIDEOLAR.forEach(v => {
+            const src = encodeURI(v.fayl);
+            const card = document.createElement("article");
+            card.className = "vd-card";
+            card.dataset.q = (v.n + " " + v.nom).toLowerCase();
+            card.innerHTML =
+                '<div class="vd-player"><video controls preload="metadata" playsinline></video>' +
+                '<div class="vd-missing"><b>▶</b><span>Video tez orada joylanadi</span></div></div>' +
+                '<div class="vd-body"><span class="vd-tag"></span><h2></h2><a class="vd-dl" download>⬇ Videoni yuklab olish</a></div>';
+            const video = card.querySelector("video");
+            const s = document.createElement("source");
+            s.src = src;
+            s.type = "video/mp4";
+            s.addEventListener("error", () => card.classList.add("no-file"));
+            video.appendChild(s);
+            video.addEventListener("play", () => {
+                grid.querySelectorAll("video").forEach(o => { if (o !== video) o.pause(); });
+            });
+            card.querySelector(".vd-tag").textContent = v.n + "-video";
+            card.querySelector("h2").textContent = v.nom;
+            card.querySelector(".vd-dl").href = src;
+            grid.appendChild(card);
+        });
+
+        document.getElementById("vd-search").addEventListener("input", e => {
+            const q = e.target.value.trim().toLowerCase();
+            let n = 0;
+            grid.querySelectorAll(".vd-card").forEach(c => { const ok = c.dataset.q.includes(q); c.style.display = ok ? "" : "none"; n += ok; });
+            document.getElementById("vd-empty").style.display = n ? "none" : "block";
+        });
+    </script>
+</body>
+</html>
