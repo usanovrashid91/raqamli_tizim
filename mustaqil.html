@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustaqil ta'lim — Usanov Rashid</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        .mt-page { max-width: 1150px; margin: 0 auto; padding: 32px 20px 56px; font-family: "Segoe UI", Calibri, Arial, sans-serif; color: #1F2933; line-height: 1.5; }
+        .mt-head { text-align: center; margin-bottom: 26px; }
+        .mt-head h1 { font-size: 30px; margin: 0 0 8px; color: #14213D; }
+        .mt-head p { margin: 0 auto; color: #52606D; font-size: 16px; max-width: 760px; }
+        .mt-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 22px 0 28px; }
+        .mt-tabs a { text-decoration: none; padding: 8px 16px; border-radius: 20px; background: #F2F5F9; color: #14213D; font-size: 14px; font-weight: 600; border: 1px solid #D5DCE4; }
+        .mt-tabs a:hover { background: #0E7C86; color: #fff; border-color: #0E7C86; }
+        .mt-section { margin-bottom: 42px; scroll-margin-top: 20px; }
+        .mt-section > h2 { font-size: 23px; color: #14213D; margin: 0 0 16px; padding-bottom: 8px; border-bottom: 2px solid #E9762B; display: inline-block; }
+        .mt-progress { background: #fff; border-radius: 12px; box-shadow: 0 3px 12px rgba(20,33,61,.1); padding: 16px 20px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+        .mt-bar { flex: 1; min-width: 200px; height: 12px; background: #E4E9F0; border-radius: 6px; overflow: hidden; }
+        .mt-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #0E7C86, #2E9E5B); transition: width .3s; }
+        .mt-progress b { color: #0E7C86; }
+        .mt-print { background: #14213D; color: #fff; border: none; padding: 9px 16px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 14px; }
+        .mt-topic { background: #fff; border-radius: 14px; box-shadow: 0 4px 16px rgba(20,33,61,.1); margin-bottom: 18px; overflow: hidden; }
+        .mt-topic summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 16px; padding: 18px 22px; }
+        .mt-topic summary::-webkit-details-marker { display: none; }
+        .mt-num { flex: none; width: 46px; height: 46px; border-radius: 50%; background: #0E7C86; color: #fff; display: flex; align-items: center; justify-content: center; font: 700 20px Cambria, Georgia, serif; }
+        .mt-topic summary h3 { margin: 0; font-size: 17px; color: #14213D; flex: 1; }
+        .mt-count { font-size: 13px; color: #7B8794; white-space: nowrap; }
+        .mt-arrow { color: #E9762B; font-size: 18px; transition: transform .2s; }
+        .mt-topic[open] .mt-arrow { transform: rotate(90deg); }
+        .mt-inner { padding: 0 22px 22px 84px; }
+        .mt-inner h4 { margin: 14px 0 8px; font-size: 15px; color: #0E7C86; text-transform: uppercase; letter-spacing: .5px; }
+        .mt-themes { margin: 0; padding-left: 20px; }
+        .mt-themes li { margin-bottom: 4px; }
+        .mt-task { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: 10px; background: #F7F9FB; margin-bottom: 8px; border: 1px solid #E4E9F0; }
+        .mt-task input { margin-top: 4px; width: 18px; height: 18px; accent-color: #2E9E5B; flex: none; cursor: pointer; }
+        .mt-task.done { background: #EAF6EF; border-color: #BFE3CC; }
+        .mt-task.done .mt-text { color: #52606D; }
+        .mt-lvl { flex: none; font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 10px; margin-top: 2px; }
+        .mt-lvl.l1 { background: #E3F4EA; color: #2E9E5B; }
+        .mt-lvl.l2 { background: #FDF0E6; color: #C25E17; }
+        .mt-lvl.l3 { background: #FBE7E6; color: #C4453D; }
+        .mt-text code { font-family: "Courier New", monospace; background: #E8EDF3; padding: 1px 5px; border-radius: 4px; font-size: 14px; }
+        .mt-hint { display: block; font-size: 13px; color: #7B8794; margin-top: 3px; }
+        .mt-steps { counter-reset: s; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+        .mt-step { background: #fff; border-radius: 12px; box-shadow: 0 3px 12px rgba(20,33,61,.1); padding: 18px; position: relative; }
+        .mt-step::before { counter-increment: s; content: counter(s); position: absolute; top: -12px; left: 16px; width: 30px; height: 30px; border-radius: 50%; background: #E9762B; color: #fff; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+        .mt-step h3 { font-size: 15px; margin: 8px 0 6px; color: #14213D; }
+        .mt-step p { margin: 0; font-size: 14px; color: #52606D; overflow-wrap: anywhere; }
+        .mt-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 12px rgba(20,33,61,.1); }
+        .mt-table th { background: #14213D; color: #fff; text-align: left; padding: 12px 16px; font-size: 14px; }
+        .mt-table td { padding: 11px 16px; border-bottom: 1px solid #E4E9F0; font-size: 15px; }
+        .mt-table tr:nth-child(even) td { background: #F7F9FB; }
+        .mt-table td:last-child { font-weight: 700; color: #0E7C86; text-align: center; width: 110px; }
+        .mt-books { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+        .mt-book { background: #fff; border-radius: 12px; box-shadow: 0 3px 12px rgba(20,33,61,.1); padding: 16px 18px; border-left: 4px solid #3A7BC8; }
+        .mt-book.web { border-left-color: #2E9E5B; }
+        .mt-book b { display: block; color: #14213D; margin-bottom: 4px; }
+        .mt-book span { font-size: 14px; color: #52606D; }
+        .mt-book a { color: #0E7C86; font-weight: 600; font-size: 14px; word-break: break-all; }
+        .mt-empty { text-align: center; color: #7B8794; display: none; }
+        @media (max-width: 640px) { .mt-inner { padding-left: 22px; } .mt-count { display: none; } }
+        @media print {
+            header, footer, .mt-tabs, .mt-progress, #mt-qoida, #mt-baho, #mt-adab { display: none !important; }
+            .mt-topic { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+            .mt-task input { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo" width="50">
+            <span>Usanov Rashid</span>
+        </div>
+
+        <nav>
+            <ul class="main-menu">
+                <li><a href="index.html">Bosh menyu</a></li>
+                <li><a href="maruza.html">Ma'ruza</a></li>
+                <li><a href="amaliy.html">Amaliy</a></li>
+                <li><a href="mustaqil.html" aria-current="page">Mustaqil ta'lim</a></li>
+                <li><a href="prezentatsiya.html">Prezentatsiya</a></li>
+                <li class="more-dropdown">
+                    <span class="more-trigger">More</span>
+                    <ul class="dropdown-menu">
+                        <li><a href="video.html">Video</a></li>
+                        <li><a href="O'qituvchi_uchun.html">O'qituvchi uchun test</a></li>
+                        <li><a href="Talaba_uchun.html">Talaba uchun test</a></li>
+                        <li><a href="structure.html">Sayt strukturasi</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="search-container">
+                <img src="assets/images/search-icon.png" alt="Qidiruv" class="search-icon" width="28">
+                <input type="text" class="search-input" id="mt-search" placeholder="Qidiruv...">
+            </div>
+        </nav>
+    </header>
+
+    <main class="mt-page">
+        <div class="mt-head">
+            <h1>Mustaqil ta’lim</h1>
+            <p>Kompyuter matematika tizimlari va MATLAB fanidan mustaqil ish mavzulari, amaliy topshiriqlar, topshirish tartibi va adabiyotlar.</p>
+        </div>
+
+        <div class="mt-tabs">
+            <a href="#mt-mavzular">Mavzular va topshiriqlar</a>
+            <a href="#mt-qoida">Topshirish tartibi</a>
+            <a href="#mt-baho">Baholash mezonlari</a>
+            <a href="#mt-adab">Adabiyotlar</a>
+        </div>
+
+        <section class="mt-section" id="mt-mavzular">
+            <h2>Mavzular va topshiriqlar</h2>
+            <div class="mt-progress">
+                <span>Bajarilgan topshiriqlar: <b id="mt-done">0</b> / <b id="mt-all">0</b></span>
+                <div class="mt-bar"><i id="mt-fill"></i></div>
+                <button class="mt-print" type="button" onclick="window.print()">🖨 Topshiriqlarni chop etish</button>
+            </div>
+            <div id="mt-list"></div>
+            <p class="mt-empty" id="mt-empty">Qidiruv bo‘yicha hech narsa topilmadi.</p>
+        </section>
+
+        <section class="mt-section" id="mt-qoida">
+            <h2>Topshirish tartibi</h2>
+            <div class="mt-steps">
+                <div class="mt-step"><h3>Mavzuni tanlang</h3><p>Har bir bo‘limdan bitta mustaqil ish mavzusini tanlang va o‘qituvchi bilan kelishing.</p></div>
+                <div class="mt-step"><h3>Topshiriqlarni bajaring</h3><p>Har bir topshiriq uchun alohida .m fayl yarating, kodga izoh (%) yozing.</p></div>
+                <div class="mt-step"><h3>Hisobot tayyorlang</h3><p>Titul varag‘i, ishning maqsadi, kod, natijalar (grafiklar skrinshoti) va xulosa.</p></div>
+                <div class="mt-step"><h3>Faylni nomlang</h3><p>Hisobot va .m fayllarni bitta arxivga joylang: <code>Familiya_Guruh_MavzuN.zip</code></p></div>
+                <div class="mt-step"><h3>Himoya qiling</h3><p>Belgilangan muddatda topshiring va ish bo‘yicha savollarga javob bering.</p></div>
+            </div>
+        </section>
+
+        <section class="mt-section" id="mt-baho">
+            <h2>Baholash mezonlari</h2>
+            <table class="mt-table">
+                <thead><tr><th>Mezon</th><th>Ulushi</th></tr></thead>
+                <tbody>
+                    <tr><td>Topshiriqlarning to‘g‘ri bajarilishi va natijalarning to‘g‘riligi</td><td>40%</td></tr>
+                    <tr><td>Kod sifati: tushunarli o‘zgaruvchi nomlari, izohlar, funksiyalardan foydalanish</td><td>20%</td></tr>
+                    <tr><td>Hisobotning rasmiylashtirilishi va grafiklarning sifati</td><td>20%</td></tr>
+                    <tr><td>Himoya: savollarga javob, kodni tushuntira olish</td><td>20%</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="mt-section" id="mt-adab">
+            <h2>Adabiyotlar va foydali havolalar</h2>
+            <div class="mt-books">
+                <div class="mt-book"><b>Дьяконов В. П. MATLAB. Полный самоучитель.</b><span>Moskva: DMK Press. MATLAB tizimi bo‘yicha to‘liq qo‘llanma.</span></div>
+                <div class="mt-book"><b>Ануфриев И. Е. Самоучитель MATLAB.</b><span>Sankt-Peterburg: BHV-Peterburg. Boshlang‘ich o‘rganish uchun.</span></div>
+                <div class="mt-book"><b>Chapman S. J. MATLAB Programming for Engineers.</b><span>Cengage Learning. Muhandislar uchun MATLAB’da dasturlash.</span></div>
+                <div class="mt-book"><b>Moore H. MATLAB for Engineers.</b><span>Pearson. Misollar va masalalar bilan darslik.</span></div>
+                <div class="mt-book web"><b>MATLAB rasmiy hujjatlari</b><a href="https://www.mathworks.com/help/matlab/" target="_blank" rel="noopener">mathworks.com/help/matlab</a></div>
+                <div class="mt-book web"><b>MATLAB Onramp — bepul onlayn kurs</b><a href="https://matlabacademy.mathworks.com/" target="_blank" rel="noopener">matlabacademy.mathworks.com</a></div>
+                <div class="mt-book web"><b>GNU Octave — MATLAB’ning bepul muqobili</b><a href="https://octave.org/" target="_blank" rel="noopener">octave.org</a></div>
+                <div class="mt-book web"><b>MATLAB Online — brauzerda ishlash</b><a href="https://matlab.mathworks.com/" target="_blank" rel="noopener">matlab.mathworks.com</a></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2025 Usanov Rashid | Raqamlashtirish va kompyuter modellash metodikasi
+    </footer>
+
+    <script>
+        // Daraja: 1 — oson, 2 — o'rta, 3 — qiyin. Mavzu yoki topshiriq qo'shish uchun shu ro'yxatni tahrirlang.
+        const MAVZULAR = [
+            {
+                nom: "Kompyuter matematika tizimlari tarixi. MATLAB tizimining vazifalari va imkoniyatlari",
+                mavzular: [
+                    "Kompyuter matematika tizimlarining qiyosiy tahlili: Maple, Mathematica, Mathcad, MATLAB",
+                    "MATLAB’ning bepul muqobillari: GNU Octave, Scilab, Python (NumPy, SciPy)",
+                    "MATLAB toolbox’lari va ularning qo‘llanish sohalari"
+                ],
+                topshiriqlar: [
+                    [1, "MATLAB muhitining asosiy oynalari (Command Window, Workspace, Current Folder, Editor) vazifasini skrinshotlar bilan tavsiflang."],
+                    [1, "<code>help</code>, <code>doc</code> va <code>lookfor</code> buyruqlari yordamida <code>sqrt</code> funksiyasi haqida ma’lumot oling va farqini yozing."],
+                    [2, "To‘rtta tizimni yaratilgan yili, ishlab chiquvchisi va asosiy yo‘nalishi bo‘yicha jadvalda taqqoslang."],
+                    [3, "x² − 5x + 6 = 0 tenglamani MATLAB’da va GNU Octave yoki Python’da yeching, sintaksisni taqqoslang.", "Tekshirish uchun: x₁ = 3, x₂ = 2"]
+                ]
+            },
+            {
+                nom: "MATLAB’ning asosiy obyektlari. Ma’lumotlarni tashkil qilish va tasvirlash",
+                mavzular: [
+                    "MATLAB’da ikki o‘lchovli grafiklar va ularni bezash",
+                    "Uch o‘lchovli grafika: mesh, surf, contour",
+                    "Cell massivlar va strukturalar (struct) bilan ishlash"
+                ],
+                topshiriqlar: [
+                    [1, "x ∈ [0, 2π] oraliqda sin(x) va cos(x) grafiklarini bitta oynada chizing; <code>legend</code>, <code>title</code>, <code>grid on</code> qo‘shing."],
+                    [2, "<code>subplot</code> yordamida 2×2 oynada x², √x, e<sup>−x</sup> va ln x grafiklarini x ∈ [0.1, 5] oraliqda chizing."],
+                    [2, "z = sin(√(x² + y²)) sirtini <code>meshgrid</code> va <code>surf</code> yordamida x, y ∈ [−8, 8] oraliqda chizing."],
+                    [3, "Talaba haqida <code>struct</code> (ism, guruh, baholar) yarating, 3 ta talabadan massiv tuzing va o‘rtacha bahosi eng yuqori talabani toping."]
+                ]
+            },
+            {
+                nom: "Arifmetik va mantiqiy amallar. Vektorlar va matritsalar ustida amallar",
+                mavzular: [
+                    "Matritsalar algebrasi va uning MATLAB’da amalga oshirilishi",
+                    "Elementma-element (.*, ./, .^) va matritsa amallarining farqi",
+                    "Mantiqiy indekslash va uning qo‘llanilishi"
+                ],
+                topshiriqlar: [
+                    [1, "A = [2 1; 1 3] va B = [1 0; 2 1] uchun <code>A*B</code>, <code>A.*B</code>, <code>A'</code>, <code>inv(A)</code>, <code>det(A)</code> ni hisoblang.", "Tekshirish uchun: det(A) = 5"],
+                    [2, "Sistemani <code>A\\b</code> yordamida yeching: 3x + 2y − z = 1; 2x − 2y + 4z = −2; −x + 0.5y − z = 0.", "Tekshirish uchun: x = 1, y = −2, z = −2"],
+                    [2, "<code>v = randi(100, 1, 20)</code> vektoridan 50 dan katta elementlarni mantiqiy indekslash bilan ajrating va ularning sonini toping."],
+                    [3, "x = 0:5 va y = [1 2.1 4.9 10.2 16.8 26.1] nuqtalarga <code>polyfit</code> bilan 2-darajali ko‘phad moslang, <code>polyval</code> bilan nuqtalar va egri chiziqni bitta grafikda chizing."]
+                ]
+            },
+            {
+                nom: "Dasturlash asoslari. Ma’lumot va fayl toifalari",
+                mavzular: [
+                    "MATLAB’da algoritmlash: tarmoqlanish va takrorlanish operatorlari",
+                    "Sikllarni vektorlashtirish va dastur tezligini o‘lchash (tic/toc)",
+                    "MATLAB’da matn, CSV va .mat fayllar bilan ishlash"
+                ],
+                topshiriqlar: [
+                    [1, "Kiritilgan son juft yoki toqligini aniqlaydigan skript yozing (<code>input</code>, <code>mod</code>, <code>if</code>)."],
+                    [2, "1 dan 100 gacha bo‘lgan tub sonlarni <code>for</code> sikli yordamida (<code>isprime</code>siz) toping, natijani <code>isprime</code> bilan tekshiring.", "Tekshirish uchun: 25 ta tub son"],
+                    [2, "<code>while</code> sikli bilan 1 + 1/2 + 1/3 + … yig‘indisi 3 dan oshishi uchun nechta had kerakligini toping.", "Tekshirish uchun: 11 ta had"],
+                    [3, "10×10 tasodifiy matritsani <code>writematrix</code> bilan CSV faylga yozing, <code>readmatrix</code> bilan o‘qing va har bir ustun o‘rtachasini <code>fprintf</code> bilan matn fayliga yozing."]
+                ]
+            },
+            {
+                nom: "M-fayl funksiyalari. Lokal va global o‘zgaruvchilar. O‘zgaruvchi sondagi argumentlar",
+                mavzular: [
+                    "Funksiya-fayllar, lokal va ichki (nested) funksiyalar",
+                    "Rekursiv funksiyalar va ularning samaradorligi",
+                    "Anonim funksiyalar va sonli usullar: fzero, integral, fminsearch"
+                ],
+                topshiriqlar: [
+                    [1, "Radius bo‘yicha doira yuzi va aylana uzunligini qaytaradigan <code>[S, L] = aylana(r)</code> funksiyasini yozing."],
+                    [2, "<code>varargin</code> yordamida istalgan sondagi sonlarning o‘rta qiymatini hisoblaydigan funksiya yozing."],
+                    [2, "<code>persistent</code> o‘zgaruvchi yordamida o‘zi necha marta chaqirilganini sanaydigan funksiya yozing."],
+                    [3, "Fibonachchi sonini hisoblaydigan rekursiv <code>fib(n)</code> funksiyasini va sikl variantini yozing; n = 25 uchun <code>tic/toc</code> bilan tezligini taqqoslang."],
+                    [3, "f = @(x) x.^3 − 2x − 5 anonim funksiyasini tuzing, grafigini chizing va ildizini <code>fzero</code> bilan toping.", "Tekshirish uchun: x ≈ 2.0946"]
+                ]
+            }
+        ];
+        const LVL = { 1: "Oson", 2: "O‘rta", 3: "Qiyin" };
+        const KEY = "mustaqil-talim-bajarildi";
+        let saqlangan = {};
+        try { saqlangan = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { saqlangan = {}; }
+
+        const list = document.getElementById("mt-list");
+        MAVZULAR.forEach((m, i) => {
+            const d = document.createElement("details");
+            d.className = "mt-topic";
+            if (i === 0) d.open = true;
+            let html = '<summary><span class="mt-num">' + (i + 1) + '</span><h3>' + m.nom + '</h3>' +
+                '<span class="mt-count">' + m.topshiriqlar.length + ' ta topshiriq</span><span class="mt-arrow">▶</span></summary>' +
+                '<div class="mt-inner"><h4>Mustaqil ish mavzulari</h4><ul class="mt-themes">' +
+                m.mavzular.map(t => '<li>' + t + '</li>').join("") + '</ul><h4>Amaliy topshiriqlar</h4>';
+            m.topshiriqlar.forEach((t, j) => {
+                const id = (i + 1) + "-" + (j + 1);
+                html += '<label class="mt-task' + (saqlangan[id] ? ' done' : '') + '">' +
+                    '<input type="checkbox" data-id="' + id + '"' + (saqlangan[id] ? ' checked' : '') + '>' +
+                    '<span class="mt-lvl l' + t[0] + '">' + LVL[t[0]] + '</span>' +
+                    '<span class="mt-text"><b>' + id + '.</b> ' + t[1] + (t[2] ? '<span class="mt-hint">' + t[2] + '</span>' : '') + '</span></label>';
+            });
+            d.innerHTML = html + '</div>';
+            d.dataset.q = d.textContent.toLowerCase();
+            list.appendChild(d);
+        });
+
+        function yangila() {
+            const all = list.querySelectorAll(".mt-task input");
+            const done = list.querySelectorAll(".mt-task input:checked").length;
+            document.getElementById("mt-all").textContent = all.length;
+            document.getElementById("mt-done").textContent = done;
+            document.getElementById("mt-fill").style.width = (all.length ? done / all.length * 100 : 0) + "%";
+        }
+        list.addEventListener("change", e => {
+            if (!e.target.matches("input[type=checkbox]")) return;
+            e.target.closest(".mt-task").classList.toggle("done", e.target.checked);
+            if (e.target.checked) saqlangan[e.target.dataset.id] = 1; else delete saqlangan[e.target.dataset.id];
+            try { localStorage.setItem(KEY, JSON.stringify(saqlangan)); } catch (err) {}
+            yangila();
+        });
+        yangila();
+
+        document.getElementById("mt-search").addEventListener("input", e => {
+            const q = e.target.value.trim().toLowerCase();
+            let n = 0;
+            list.querySelectorAll(".mt-topic").forEach(d => {
+                const ok = d.dataset.q.includes(q);
+                d.style.display = ok ? "" : "none";
+                if (q && ok) d.open = true;
+                n += ok;
+            });
+            document.getElementById("mt-empty").style.display = n ? "none" : "block";
+        });
+    </script>
+</body>
+</html>
